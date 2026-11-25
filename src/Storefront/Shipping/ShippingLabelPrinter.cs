@@ -10,7 +10,10 @@ public sealed class ShippingLabelPrinter
     private const double RenderCostMs = 200;
     private const double FieldRenderCostMs = 3;
 
-    private static readonly string[] ExtraFields = [];
+    private static readonly string[] ExtraFields =
+    [
+        "customs-tariff-code",
+    ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
     {
