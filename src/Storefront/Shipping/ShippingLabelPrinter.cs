@@ -13,6 +13,7 @@ public sealed class ShippingLabelPrinter
     private static readonly string[] ExtraFields =
     [
         "customs-tariff-code",
+        "sender-phone",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
