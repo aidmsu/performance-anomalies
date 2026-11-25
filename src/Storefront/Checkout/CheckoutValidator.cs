@@ -28,6 +28,7 @@ public sealed class CheckoutValidator
         new("cash-on-delivery-limit", RuleCheckCostMs),
         new("student-discount-proof", RuleCheckCostMs),
         new("bundle-integrity", RuleCheckCostMs),
+        new("delivery-slot-available", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
