@@ -21,6 +21,7 @@ public sealed class ShippingLabelPrinter
         "fragile-marker",
         "order-reference",
         "service-level",
+        "weight-imperial",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
