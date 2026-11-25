@@ -18,6 +18,7 @@ public sealed class CheckoutValidator
         new("embargoed-destination", RuleCheckCostMs),
         new("po-box-courier", RuleCheckCostMs),
         new("age-restricted-items", RuleCheckCostMs),
+        new("hazmat-air-shipping", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
