@@ -12,8 +12,10 @@ namespace Storefront.Infrastructure;
 /// cost primitives in this folder (<see cref="SimulatedDatabase"/>, <see cref="SimulatedStorage"/>,
 /// <see cref="SimulatedNetwork"/>, <see cref="Compute"/>), and those primitives end up here.
 /// <para>
-/// Waiting sleeps for most of the duration and spins for the rest, because <see cref="Thread.Sleep(TimeSpan)"/>
-/// alone is too coarse (about 15.6 ms on Windows). Every call gets a small multiplicative jitter, like real I/O.
+/// On Linux and Windows a wait sleeps for most of the duration and spins for the rest, because
+/// <see cref="Thread.Sleep(TimeSpan)"/> alone is too coarse (about 15.6 ms on Windows). On macOS it only spins:
+/// sleeping threads on macOS CI virtual machines wake up 15-50 ms late. Every call gets a small multiplicative
+/// jitter, like real I/O.
 /// </para>
 /// <para>
 /// Decisions that depend on chance (cache hits, retries, contention) use <see cref="Random(string)"/>. On CI the
@@ -27,10 +29,10 @@ public static class Workload
     private const int NoisyMachineModulus = 40;
     private const double NoisyMachineFactor = 1.35;
 
+    private static readonly bool CanSleep = !OperatingSystem.IsMacOS();
+
     private static readonly TimeSpan SleepMargin =
-        OperatingSystem.IsWindows() ? TimeSpan.FromMilliseconds(20)
-        : OperatingSystem.IsMacOS() ? TimeSpan.FromMilliseconds(8)
-        : TimeSpan.FromMilliseconds(2);
+        OperatingSystem.IsWindows() ? TimeSpan.FromMilliseconds(20) : TimeSpan.FromMilliseconds(2);
 
     private static readonly string? CommitSha = ReadCommitSha();
 
@@ -77,10 +79,11 @@ public static class Workload
 
     private static void WaitUntil(Stopwatch stopwatch, TimeSpan duration)
     {
-        // macOS coalesces timers, so long sleeps overshoot more; spin a little longer there.
-        var margin = OperatingSystem.IsMacOS() ? SleepMargin + duration * 0.015 : SleepMargin;
-        var sleep = duration - stopwatch.Elapsed - margin;
-        if (sleep > TimeSpan.Zero) Thread.Sleep(sleep);
+        if (CanSleep)
+        {
+            var sleep = duration - stopwatch.Elapsed - SleepMargin;
+            if (sleep > TimeSpan.Zero) Thread.Sleep(sleep);
+        }
         while (stopwatch.Elapsed < duration) Thread.SpinWait(20);
     }
 

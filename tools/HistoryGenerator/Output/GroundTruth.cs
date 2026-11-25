@@ -363,9 +363,11 @@ public static class GroundTruth
         sb.AppendLine();
         sb.AppendLine("- Model values exclude harness overhead. Measured durations are typically 0-2 ms above the model, and every");
         sb.AppendLine("  simulated call has about 3% multiplicative jitter.");
-        sb.AppendLine("- Tests below about 3 ms can show +0.5-1 ms in runs where their class happens to start in the first parallel");
-        sb.AppendLine("  batch of the test run. Which classes start first varies from run to run; it is not a change.");
+        sb.AppendLine("- Tests that start in the first parallel batch of a test run (the first ~2 tests of each project) can be 1-4 ms");
+        sb.AppendLine("  slower because of start-up contention. Which tests start first varies from run to run; it is not a change.");
         sb.AppendLine("- `cpu×N` (real CPU work) has no absolute value; only the ratio between segments is part of the ground truth.");
+        sb.AppendLine("  Its duration also depends on the runner's CPU (`cpu_model` column), which differs between runs; dividing by");
+        sb.AppendLine("  `CatalogHasherTests.Hashes_catalog_export` from the same run removes most of that.");
         sb.AppendLine("- Seeded draws (uniform, mixture, tail) are exact per run: `expected-durations.csv` has the realized value for run");
         sb.AppendLine("  attempt 1, including the noisy-machine factor from `bad-runners.json`.");
         sb.AppendLine();

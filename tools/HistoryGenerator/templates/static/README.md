@@ -14,7 +14,7 @@
 
 The fictional storefront simulates database, storage, network, and compute costs through primitives in `src/Storefront/Infrastructure/` that end in `Workload`. Each simulated cost has small multiplicative jitter, and some runs simulate a noisy CI machine. With `GITHUB_SHA` set, `Workload.Random(key)` seeds decisions from the key, commit, target, and run attempt. Repeating those inputs reproduces the decisions. See `src/Storefront/Infrastructure/Workload.cs` for details.
 
-The unit and integration projects use xUnit 2.9.3 on VSTest with `Microsoft.NET.Test.Sdk` and `JunitXml.TestLogger`. Before the first test, `WarmedUpTestFramework` uses `RuntimeHelpers.PrepareMethod` to precompile all eligible methods in the product and test assemblies and warms up common xUnit assertions, culture data, and serializers to keep first-call JIT costs outside the measured tests. The runner sets `maxParallelThreads` to `4` and `methodDisplay` to `classAndMethod`. Tests assert functional behavior only, so the injected timing changes leave assertions passing.
+The unit and integration projects use xUnit 2.9.3 on VSTest with `Microsoft.NET.Test.Sdk` and `JunitXml.TestLogger`. Before the first test, `WarmedUpTestFramework` uses `RuntimeHelpers.PrepareMethod` to precompile all eligible methods in the product and test assemblies and warms up common xUnit assertions, culture data, and serializers to keep first-call JIT costs outside the measured tests. The runner sets `maxParallelThreads` to `2` and `methodDisplay` to `classAndMethod`. Tests assert functional behavior only, so the injected timing changes leave assertions passing.
 
 The `tests` workflow runs on pushes to `master`, pull requests, and manual dispatch. Each run has four jobs.
 

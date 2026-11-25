@@ -5,7 +5,7 @@ using HistoryGenerator.Scenarios;
 
 namespace HistoryGenerator.Validation;
 
-public sealed record Measurement(string Sha, string Target, int Attempt, string RunId, string Project, string Test, string Outcome, double DurationMs);
+public sealed record Measurement(string Sha, string Target, int Attempt, string RunId, string Project, string Test, string Outcome, double DurationMs, DateTimeOffset? Start);
 
 /// <summary>
 /// Compares measured durations (durations.csv rows from CI or a local replay) with the duration model, including the
@@ -15,6 +15,9 @@ public sealed record Measurement(string Sha, string Target, int Attempt, string 
 public static class Validator
 {
     private const double AbsTolMs = 2.5;
+    /// <summary>Extra absolute tolerance for tests that start in the first parallel batch of a test run.</summary>
+    private const double FirstBatchExtraMs = 5;
+    private const string CpuReferenceTest = "Storefront.UnitTests.Security.CatalogHasherTests.Hashes_catalog_export";
     private const double CpuRelTol = 0.30;
 
     public static int Run(IReadOnlyList<string> shas, IEnumerable<string> csvFiles, IReadOnlyCollection<Target>? onlyTargets, string? reportPath)
@@ -69,7 +72,13 @@ public static class Validator
         }
 
         // 2. Noise per target from residuals of modelled tests with expected >= 20 ms.
-        var residuals = new List<(Scenario Scenario, TestRef Test, Target Target, int Attempt, string RunId, int Commit, double Measured, double Expected, Dist Dist)>();
+        // Tests that start in the first parallel batch of a test run pay start-up contention; and real CPU work is
+        // normalized by the CPU reference test of the same run, because runners have different CPUs.
+        var runStart = rows.Where(r => r.Start is not null).GroupBy(r => (r.Sha, r.Target, r.Attempt, r.RunId, r.Project))
+            .ToDictionary(g => g.Key, g => g.Min(r => r.Start!.Value));
+        var cpuReference = rows.Where(r => r.Test == CpuReferenceTest).GroupBy(r => (r.Sha, r.Target, r.Attempt, r.RunId))
+            .ToDictionary(g => g.Key, g => g.First().DurationMs);
+        var residuals = new List<(Scenario Scenario, TestRef Test, Target Target, int Attempt, string RunId, int Commit, double Measured, double Expected, Dist Dist, bool FirstBatch, double? Reference)>();
         foreach (var r in rows.Where(r => tests.ContainsKey(r.Test)))
         {
             var (scenario, test) = tests[r.Test];
@@ -77,7 +86,10 @@ public static class Validator
             var c = index[r.Sha];
             var dist = scenario.Expected(test, target, c);
             var expected = Seeds.Realize(dist, shas[c - 1], target, r.Attempt);
-            residuals.Add((scenario, test, target, r.Attempt, r.RunId, c, r.DurationMs, expected ?? double.NaN, dist));
+            var firstBatch = r.Start is { } start && runStart.TryGetValue((r.Sha, r.Target, r.Attempt, r.RunId, r.Project), out var first) &&
+                             (start - first).TotalMilliseconds <= 20;
+            double? reference = cpuReference.TryGetValue((r.Sha, r.Target, r.Attempt, r.RunId), out var refMs) ? refMs : null;
+            residuals.Add((scenario, test, target, r.Attempt, r.RunId, c, r.DurationMs, expected ?? double.NaN, dist, firstBatch, reference));
         }
         var relTol = new Dictionary<Target, double>();
         foreach (var g in residuals.Where(x => !double.IsNaN(x.Expected) && x.Expected >= 20).GroupBy(x => x.Target))
@@ -106,22 +118,34 @@ public static class Validator
 
             if (modelled.Count > 0)
             {
-                var overhead = Check(modelled.Select(p => (p.Commit, p.Measured, p.Expected, p.Dist)).ToList(), tol, AbsTolMs, ref status, details);
+                var overhead = Check(modelled.Select(p => (p.Commit, p.Measured, p.Expected, p.Dist, p.FirstBatch)).ToList(), tol, AbsTolMs, ref status, details);
                 if (overhead > 0.5) overheads.Add(($"{series.Key.TrxName} [{target.Id()}/a{series.Key.Attempt}]", overhead));
                 CheckDeclaredChanges(points[0].Scenario, points[0].Test, target,
                     modelled.Select(p => (p.Commit, p.Measured - overhead, p.Expected)).ToList(), tol, ref status, details);
             }
             if (cpu.Count > 0)
             {
-                var k = Median(cpu.Select(p => p.Measured / ((Dist.CpuBound)p.Dist).Units).ToList());
-                Check(cpu.Select(p => (p.Commit, p.Measured, k * ((Dist.CpuBound)p.Dist).Units, p.Dist)).ToList(), CpuRelTol, 3, ref status, details, allowOverhead: false);
-                var segments = cpu.GroupBy(p => ((Dist.CpuBound)p.Dist).Units).OrderBy(g => g.Key).ToList();
-                if (segments.Count > 1)
+                // Real CPU work: per run, divide by the CPU reference test (same machine); the reference itself is
+                // only checked for gross instability, because its absolute value depends on the runner's CPU.
+                var isReference = series.Key.TrxName == CpuReferenceTest;
+                var normalized = cpu.Where(p => isReference || p.Reference is > 0)
+                    .Select(p => (p.Commit, Value: isReference ? p.Measured : p.Measured / p.Reference!.Value, Units: ((Dist.CpuBound)p.Dist).Units, p.Dist))
+                    .ToList();
+                if (normalized.Count > 0)
                 {
-                    var ratio = Median(segments[^1].Select(p => p.Measured).ToList()) / Median(segments[0].Select(p => p.Measured).ToList());
-                    var model = segments[^1].Key / segments[0].Key;
-                    details.Add($"cpu ratio {ratio:0.00} (model {model:0.00})");
-                    if (Math.Abs(Math.Log(ratio / model)) > 0.2) { status = Worst(status, "FAIL"); details.Add("cpu ratio off"); }
+                    var k = Median(normalized.Select(p => p.Value / p.Units).ToList());
+                    var cpuStatus = "PASS";
+                    var cpuDetails = new List<string>();
+                    Check(normalized.Select(p => (p.Commit, p.Value, k * p.Units, p.Dist, false)).ToList(), CpuRelTol, isReference ? 3 : 0.02, ref cpuStatus, cpuDetails, allowOverhead: false);
+                    if (cpuStatus != "PASS") { status = Worst(status, isReference ? "WARN" : cpuStatus); details.AddRange(cpuDetails.Select(d => "cpu " + d)); }
+                    var segments = normalized.GroupBy(p => p.Units).OrderBy(g => g.Key).ToList();
+                    if (segments.Count > 1)
+                    {
+                        var ratio = Median(segments[^1].Select(p => p.Value).ToList()) / Median(segments[0].Select(p => p.Value).ToList());
+                        var model = segments[^1].Key / segments[0].Key;
+                        details.Add($"cpu ratio {ratio:0.00} (model {model:0.00})");
+                        if (Math.Abs(Math.Log(ratio / model)) > 0.2) { status = Worst(status, "FAIL"); details.Add("cpu ratio off"); }
+                    }
                 }
             }
             if (micro.Count > 0)
@@ -153,7 +177,7 @@ public static class Validator
     }
 
     /// <summary>Per-point and shift checks. Returns the constant overhead that was removed.</summary>
-    private static double Check(List<(int Commit, double Measured, double Expected, Dist Dist)> input, double relTol, double absTol, ref string status, List<string> details, bool allowOverhead = true)
+    private static double Check(List<(int Commit, double Measured, double Expected, Dist Dist, bool FirstBatch)> input, double relTol, double absTol, ref string status, List<string> details, bool allowOverhead = true)
     {
         // A constant per-test overhead (JIT, first-call costs inside the timed region) is not a change. It is only
         // removed when it is consistent across the model segments and small relative to the smallest modelled value.
@@ -173,9 +197,10 @@ public static class Validator
                 if (overhead > absTol) { details.Add($"constant overhead +{overhead:0.0} ms"); status = Worst(status, "WARN"); }
             }
         }
-        var points = input.Select(p => (p.Commit, Measured: Math.Max(p.Measured - overhead, 0.05), p.Expected)).ToList();
-        bool Within(double m, double e) => Math.Abs(Math.Log(m / e)) <= relTol || Math.Abs(m - e) <= absTol;
-        var outliers = points.Where(p => !Within(p.Measured, p.Expected)).ToList();
+        var points = input.Select(p => (p.Commit, Measured: Math.Max(p.Measured - overhead, 0.05), p.Expected, p.FirstBatch)).ToList();
+        bool Within(double m, double e, bool firstBatch) =>
+            Math.Abs(Math.Log(m / e)) <= relTol || Math.Abs(m - e) <= absTol + (firstBatch ? FirstBatchExtraMs : 0);
+        var outliers = points.Where(p => !Within(p.Measured, p.Expected, p.FirstBatch)).ToList();
         if (outliers.Count > 0)
         {
             var worst = outliers.MaxBy(p => Math.Abs(Math.Log(p.Measured / p.Expected)));
@@ -317,14 +342,16 @@ public static class Validator
         int Col(string name) => header.IndexOf(name) is var i and >= 0 ? i : throw new InvalidDataException($"{path}: no column {name}");
         int sha = Col("commit_sha"), target = Col("target"), attempt = Col("run_attempt"), run = Col("run_id"),
             project = Col("project"), test = Col("test"), outcome = Col("outcome"), duration = Col("duration_ms");
+        var startCol = header.IndexOf("start_time");
         string? line;
         while ((line = reader.ReadLine()) is not null)
         {
             if (line.Length == 0) continue;
             var f = ParseLine(line);
             if (f[sha] == "commit_sha") continue; // repeated header from naive concatenation
+            DateTimeOffset? start = startCol >= 0 && DateTimeOffset.TryParse(f[startCol], CultureInfo.InvariantCulture, DateTimeStyles.None, out var st) ? st : null;
             yield return new Measurement(f[sha], f[target], int.Parse(f[attempt], CultureInfo.InvariantCulture), f[run], f[project], f[test], f[outcome],
-                double.Parse(f[duration], CultureInfo.InvariantCulture));
+                double.Parse(f[duration], CultureInfo.InvariantCulture), start);
         }
     }
 
