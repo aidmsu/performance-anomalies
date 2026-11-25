@@ -35,6 +35,7 @@ public sealed class CheckoutValidator
         new("subscription-overlap", RuleCheckCostMs),
         new("loyalty-redemption-cap", RuleCheckCostMs),
         new("marketplace-seller-active", RuleCheckCostMs),
+        new("parcel-weight-limit", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
