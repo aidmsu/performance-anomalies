@@ -20,6 +20,7 @@ public sealed class ShippingLabelPrinter
         "signature-required",
         "fragile-marker",
         "order-reference",
+        "service-level",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
