@@ -33,6 +33,7 @@ public sealed class CheckoutValidator
         new("house-number-present", RuleCheckCostMs),
         new("export-license", RuleCheckCostMs),
         new("subscription-overlap", RuleCheckCostMs),
+        new("loyalty-redemption-cap", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
