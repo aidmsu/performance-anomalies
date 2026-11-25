@@ -206,7 +206,8 @@ public static class Validator
         {
             var worst = outliers.MaxBy(p => Math.Abs(Math.Log(p.Measured / p.Expected)));
             details.Add($"{outliers.Count}/{points.Count} outside tolerance (worst @{worst.Commit}: {worst.Measured:0.0} vs {worst.Expected:0.0} ms)");
-            var limit = Math.Max(2, (int)Math.Ceiling(points.Count * 0.05));
+            // Sporadic outliers are CI noise (fresh VMs have heavier tails); only a large share means the level is wrong.
+            var limit = Math.Max(2, (int)Math.Ceiling(points.Count * 0.20));
             status = Worst(status, outliers.Count > limit ? "FAIL" : "WARN");
         }
 

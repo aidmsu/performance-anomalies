@@ -19,7 +19,9 @@ The branch has no CI workflow; pushing to it never triggers a run.
 | `ground-truth/scenarios.json` | Scenario catalog with its changes |
 | `ground-truth/bad-runners.json` | Runs that simulate a noisy CI machine (all simulated costs ×1.35) |
 | `ground-truth/negative-series.json` | (test, target) series that never change; every alert on them is a false positive |
-| `measurements/` | Merged `durations.csv` of all CI runs of `master`, plus the validation report |
+| `measurements/ci-durations.csv.gz` | Merged `durations.csv` of all 480 CI jobs of `master` (120 commits x 4 targets, run attempt 1) |
+| `measurements/runs.json` | The CI runs the measurements come from (run id, head SHA, status) |
+| `measurements/validation-report.txt` | Output of `validate` for those measurements against the model |
 | `tools/HistoryGenerator` | The generator that renders every commit, the duration model, lint and validation |
 
 ## Scoring a detector
@@ -49,9 +51,15 @@ G=bin/Release/net10.0/HistoryGenerator.dll
 dotnet $G plan                                   # commit timeline
 dotnet $G lint                                   # scenarios, files, model and commit messages are consistent
 dotnet $G check --repo <master-checkout> --ref master    # every commit equals its rendering
-dotnet $G ground-truth --repo <master-checkout> --ref master --out ../../ground-truth
-dotnet $G validate --repo <master-checkout> --ref master --measurements ../../measurements/durations.csv
+dotnet $G ground-truth --repo <master-checkout> --ref master --out ../../ground-truth && mv ../../ground-truth/GROUND_TRUTH.md ../..
+gunzip -k ../../measurements/ci-durations.csv.gz
+dotnet $G validate --repo <master-checkout> --ref master --measurements ../../measurements/ci-durations.csv
 ```
+
+`validate` checks that every run has exactly the modelled tests and outcomes, that every series stays within
+tolerance of the model (with its seeded draws and noisy-machine factor), that no series shifts where the model
+does not, and that every declared change shows up with the modelled size (spread for variance, modality and tail
+changes; normalized by the CPU reference test for real CPU work). Sporadic outliers are warnings.
 
 `generate --repo <path>` rebuilds the 120 commits on top of the empty initial commit (HEAD must be that
 commit). Doing that for this repository would rewrite `master`. Do it only for a fresh copy, and push the
