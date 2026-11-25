@@ -9,7 +9,6 @@ public sealed class ImageCacheWarmer
 
     private static readonly string[] Renditions =
     [
-        "legacy-80",
         "legacy-64",
         "legacy-48",
         "legacy-32",
