@@ -20,11 +20,11 @@ public sealed class InvoiceRenderer
         var body = new StringBuilder();
         body.Append("%PDF-1.7\n");
         body.Append(CultureInfo.InvariantCulture, $"Invoice {invoice.Number}\n");
-        foreach (var line in invoice.Lines)
-        {
-            body.Append(CultureInfo.InvariantCulture, $"{line.Description} x{line.Quantity} {line.Quantity * line.UnitPrice:0.00}\n");
-        }
+        foreach (var line in invoice.Lines) body.Append(FormatLine(line));
         body.Append("%%EOF\n");
         return Encoding.ASCII.GetBytes(body.ToString());
     }
+
+    private static string FormatLine(InvoiceLine line) =>
+        string.Create(CultureInfo.InvariantCulture, $"{line.Description} x{line.Quantity} {line.Quantity * line.UnitPrice:0.00}\n");
 }

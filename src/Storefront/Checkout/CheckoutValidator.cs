@@ -24,6 +24,7 @@ public sealed class CheckoutValidator
         new("gift-card-quantity", RuleCheckCostMs),
         new("preorder-separation", RuleCheckCostMs),
         new("business-vat-id", RuleCheckCostMs),
+        new("courier-phone-number", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
