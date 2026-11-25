@@ -19,10 +19,12 @@ public static class Deduplicator
         var result = new List<CatalogItem>(items.Count);
         foreach (var item in items)
         {
-            if (seen.Add((item.ProductId, item.Variant))) result.Add(item);
+            if (seen.Add(KeyOf(item))) result.Add(item);
         }
         var cost = FixedCostMs + PerItemCostMs * items.Count;
         Workload.PadTo(stopwatch, cost);
         return result;
     }
+
+    private static (int, string) KeyOf(CatalogItem item) => (item.ProductId, item.Variant);
 }
