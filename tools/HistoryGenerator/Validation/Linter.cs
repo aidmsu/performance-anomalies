@@ -33,6 +33,8 @@ public static partial class Linter
         CheckReverts(snapshots, errors);
         CheckTests(errors);
         CheckMessages(errors);
+        var fakeShas = Enumerable.Range(1, History.Commits).Select(i => i.ToString("x40")).ToList();
+        errors.AddRange(HistoryGenerator.Output.GroundTruth.Overlaps(HistoryGenerator.Output.GroundTruth.Events(fakeShas)));
         return errors;
     }
 

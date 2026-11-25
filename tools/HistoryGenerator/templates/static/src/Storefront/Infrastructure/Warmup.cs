@@ -45,6 +45,8 @@ public static class Warmup
             _ = "Istanbul".ToUpper(culture);
         }
 
+        WarmUpLibraries();
+
         _ = JsonSerializer.Serialize(new { Id = 1, Name = "warmup", Tags = new[] { "a", "b" } });
         _ = SHA256.HashData(new byte[1024]);
         using (var buffer = new MemoryStream())
@@ -52,6 +54,31 @@ public static class Warmup
         {
             deflate.Write(new byte[4096]);
         }
+    }
+
+    private static void WarmUpLibraries()
+    {
+        // Generic instantiations over value types and common BCL paths are compiled on first use; pay that here.
+        var numbers = Enumerable.Range(0, 64).ToList();
+        _ = numbers.Select(i => i.ToString(CultureInfo.InvariantCulture)).ToList();
+        _ = numbers.Where(i => i % 2 == 0).Sum();
+        _ = numbers.OrderByDescending(i => i).ThenBy(i => i).ToArray();
+        _ = numbers.GroupBy(i => i % 3).ToDictionary(g => g.Key, g => g.Count());
+        _ = numbers.Distinct().Count();
+        _ = numbers.Chunk(10).Count();
+        _ = numbers.Select(i => (decimal)i).Sum();
+        _ = numbers.Select(i => (i, i.ToString(CultureInfo.InvariantCulture))).ToHashSet();
+        _ = numbers.Select(i => $"SKU-{i:000000}-01").DistinctBy(s => s[..4], StringComparer.Ordinal).ToList();
+        _ = Math.Round(12.345m * 1.19m, 2, MidpointRounding.ToEven);
+        _ = string.Join(',', numbers.Take(3));
+        _ = string.Create(CultureInfo.InvariantCulture, $"{1.5m:0.00} {DateTime.UnixEpoch:yyyy-MM-dd}");
+        var builder = new System.Text.StringBuilder();
+        builder.Append(CultureInfo.InvariantCulture, $"{42} {3.14:0.00}\n").Append('x').Append(1);
+        _ = builder.ToString().Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        _ = new Dictionary<string, decimal>(StringComparer.OrdinalIgnoreCase) { ["a"] = 1m }.GetValueOrDefault("A");
+        _ = "a/b/../c".Replace('\\', '/').Split('/', StringSplitOptions.RemoveEmptyEntries).AsEnumerable().Reverse().ToList();
+        _ = Guid.NewGuid().ToString("N");
+        _ = "Istanbul".Normalize(System.Text.NormalizationForm.FormKC).ToUpperInvariant();
     }
 
     private static void PrepareMethods(Assembly assembly)

@@ -1133,9 +1133,9 @@ public sealed class RegParamScaling : MultiTestScenario
 {
     public override string Id => "REG-PARAM-SCALING";
     public override string Category => "regression";
-    public override string Summary => "Parameter-dependent regression at commit 46 on every target: deduplication switches from a hash set to a nested loop, so cost goes from 2+0.005n ms to 2+0.005n+0.00001·n²/2 ms. itemCount=10 and 100 are unchanged (must_not), 1000 is +70%, 10000 is x10.6. A no-op refactoring of the same class at commit 45 is a decoy.";
+    public override string Summary => "Parameter-dependent regression at commit 46 on every target: deduplication switches from a hash set to a nested loop, so cost goes from 2+0.005n ms to 2+0.005n+0.00001·n²/2 ms. itemCount=10 and 100 are unchanged (must_not), 1000 is +70%, 10000 is x10.6. A no-op refactoring of the same class at commit 43 is a decoy.";
 
-    private const int Decoy = 45;
+    private const int Decoy = 43;
     private const int Culprit = 46;
     private const double FixedMs = 2;
     private const double PerItemMs = 0.005;
@@ -1754,7 +1754,7 @@ public sealed class RegCpuBound : SingleTestScenario
 {
     public override string Id => "REG-CPU-BOUND";
     public override string Category => "regression";
-    public override string Summary => "Real CPU-bound regression at commit 88 on every target: feed compression runs four Deflate passes instead of two, so duration roughly doubles (expected ratio 2.0 ± 0.25). Absolute values depend on the runner CPU.";
+    public override string Summary => "Real CPU-bound regression at commit 88 on every target: feed compression runs four Deflate passes instead of two, so duration roughly doubles (expected ratio 2.0 ± 0.25; the 3 MB input is built in a class fixture outside the measured time). Absolute values depend on the runner CPU.";
     public override TestRef Test { get; } = TestRef.Unit("Feeds", "FeedCompressorTests", "Compresses_product_feed");
     private const int Culprit = 88;
 
@@ -1801,10 +1801,12 @@ public sealed class RegCpuBound : SingleTestScenario
 
             namespace Storefront.UnitTests.Feeds;
 
-            public sealed class FeedCompressorTests
+            /// <summary>Builds the 3 MB sample feed once, outside the measured test.</summary>
+            public sealed class ProductFeedFixture
             {
-                [Fact]
-                public void Compresses_product_feed()
+                public byte[] Feed { get; }
+
+                public ProductFeedFixture()
                 {
                     var feed = new StringBuilder();
                     for (var i = 0; i < 60_000; i++)
@@ -1812,11 +1814,18 @@ public sealed class RegCpuBound : SingleTestScenario
                         feed.Append("<item sku=\"HOME-").Append((i * 7919 % 1_000_000).ToString("000000")).Append("-01\" price=\"")
                             .Append(i % 997).Append(".99\" stock=\"").Append(i % 13).Append("\"/>\n");
                     }
-                    var bytes = Encoding.UTF8.GetBytes(feed.ToString());
+                    Feed = Encoding.UTF8.GetBytes(feed.ToString());
+                }
+            }
 
-                    var sizes = FeedCompressor.Compress(bytes);
+            public sealed class FeedCompressorTests(ProductFeedFixture fixture) : IClassFixture<ProductFeedFixture>
+            {
+                [Fact]
+                public void Compresses_product_feed()
+                {
+                    var sizes = FeedCompressor.Compress(fixture.Feed);
 
-                    Assert.All(sizes.Values, size => Assert.InRange(size, 1, bytes.Length / 2));
+                    Assert.All(sizes.Values, size => Assert.InRange(size, 1, fixture.Feed.Length / 2));
                 }
             }
             """);

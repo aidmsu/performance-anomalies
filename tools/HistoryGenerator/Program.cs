@@ -33,7 +33,7 @@ int Help()
         HistoryGenerator <verb> [options]
 
           plan                                     Print the commit timeline.
-          render --commit N --out DIR              Write the repository snapshot of commit N into DIR.
+          render --commit N --out DIR              Write the snapshot of commit N into an empty (or previously rendered) DIR.
           lint                                     Check scenarios, files, model and commit messages.
           generate --repo PATH                     Create the 120 commits on top of the base commit (HEAD must be the base).
           check --repo PATH [--ref REF]            Re-render every commit and compare with the committed trees.
@@ -41,6 +41,7 @@ int Help()
                                                    Write events.json, segments.jsonl, expected-durations.csv, ...
           validate --repo PATH --measurements A.csv[,B.csv] [--ref REF] [--targets t1,t2] [--report FILE]
                                                    Compare measured durations with the model.
+          ground-truth and validate refuse a history that does not match the generator unless --force is given.
         """);
     return 1;
 }
@@ -61,16 +62,26 @@ int PrintPlan()
 
 int Render()
 {
+    const string Manifest = ".history-render-manifest";
     var commit = int.Parse(Required("commit"));
     var outDir = Path.GetFullPath(Required("out"));
-    if (Directory.Exists(outDir) && Directory.EnumerateFileSystemEntries(outDir).Any(e => !e.EndsWith("/bin") && !e.EndsWith("/obj")))
+    if (Directory.Exists(outDir))
     {
-        // Remove previous render output but keep build caches out of the way of stale sources.
-        foreach (var file in Directory.EnumerateFiles(outDir, "*", SearchOption.AllDirectories)
-                     .Where(f => !f.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}") &&
-                                 !f.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}") &&
-                                 !f.Contains($"{Path.DirectorySeparatorChar}TestResults{Path.DirectorySeparatorChar}")))
-            File.Delete(file);
+        if (Directory.Exists(Path.Combine(outDir, ".git")) || File.Exists(Path.Combine(outDir, ".git")))
+            throw new InvalidOperationException($"{outDir} is a git checkout; render into an empty directory instead.");
+        var manifestPath = Path.Combine(outDir, Manifest);
+        var hasEntries = Directory.EnumerateFileSystemEntries(outDir).Any();
+        if (hasEntries && !File.Exists(manifestPath))
+            throw new InvalidOperationException($"{outDir} is not empty and was not created by 'render'.");
+        if (File.Exists(manifestPath))
+        {
+            // Delete only what the previous render wrote; build outputs (bin/, obj/, TestResults/) are kept.
+            foreach (var path in File.ReadAllLines(manifestPath).Where(p => p.Length > 0))
+            {
+                var full = Path.GetFullPath(Path.Combine(outDir, path));
+                if (full.StartsWith(outDir + Path.DirectorySeparatorChar, StringComparison.Ordinal) && File.Exists(full)) File.Delete(full);
+            }
+        }
     }
     var snapshot = History.Render(commit);
     foreach (var (path, entry) in snapshot.Files)
@@ -81,6 +92,7 @@ int Render()
         if (entry.Executable && !OperatingSystem.IsWindows())
             File.SetUnixFileMode(full, File.GetUnixFileMode(full) | UnixFileMode.UserExecute | UnixFileMode.GroupExecute | UnixFileMode.OtherExecute);
     }
+    File.WriteAllLines(Path.Combine(outDir, Manifest), snapshot.Files.Keys);
     Console.WriteLine($"Rendered commit {commit}: {snapshot.Files.Count} files into {outDir}");
     return 0;
 }
@@ -137,9 +149,12 @@ int Validate()
 
 IReadOnlyList<string> Shas(GitRepo repo)
 {
-    var shas = repo.GeneratedCommits(options.GetValueOrDefault("ref", "HEAD"));
+    var reference = options.GetValueOrDefault("ref", "HEAD");
+    var shas = repo.GeneratedCommits(reference);
     if (shas.Count != History.Commits)
         throw new InvalidOperationException($"Expected {History.Commits} generated commits, found {shas.Count}.");
+    if (!options.ContainsKey("force") && HistoryWriter.Check(repo, reference) != 0)
+        throw new InvalidOperationException($"{reference} does not match the generator (see 'check'); pass --force to use it anyway.");
     return shas;
 }
 

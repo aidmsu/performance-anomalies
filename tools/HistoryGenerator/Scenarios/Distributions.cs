@@ -7,7 +7,7 @@ public sealed class RegBimodal : SingleTestScenario
 {
     public override string Id => "REG-BIMODAL";
     public override string Category => "regression";
-    public override string Summary => "Modality change on every target at commit 62: a stable 100 ms becomes a 50/50 mixture of 100 ms and 200 ms (sessions are read from the distributed cache first and half of the reads miss). The median barely moves; the distribution does.";
+    public override string Summary => "Modality change on every target at commit 62: a stable 100 ms becomes a 50/50 mixture of 100 ms and 200 ms (sessions are read from the distributed cache first and half of the reads miss). The mean rises by 50% and the sample median becomes unstable (it jumps between 100 and 200 ms depending on the draws); the distribution, not a level, is what changes.";
     public override TestRef Test { get; } = TestRef.Unit("Sessions", "SessionStoreTests", "Restores_customer_session");
     private const int Culprit = 62;
     private const string Key = "SessionStore.Restore";

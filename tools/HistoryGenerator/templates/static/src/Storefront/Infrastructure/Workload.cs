@@ -77,7 +77,9 @@ public static class Workload
 
     private static void WaitUntil(Stopwatch stopwatch, TimeSpan duration)
     {
-        var sleep = duration - stopwatch.Elapsed - SleepMargin;
+        // macOS coalesces timers, so long sleeps overshoot more; spin a little longer there.
+        var margin = OperatingSystem.IsMacOS() ? SleepMargin + duration * 0.015 : SleepMargin;
+        var sleep = duration - stopwatch.Elapsed - margin;
         if (sleep > TimeSpan.Zero) Thread.Sleep(sleep);
         while (stopwatch.Elapsed < duration) Thread.SpinWait(20);
     }

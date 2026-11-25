@@ -41,8 +41,13 @@ jobs:
           fetch-depth: 0
 
       - uses: actions/setup-dotnet@v6
+        env:
+          # A private install directory hides the newer runtimes preinstalled on the runner image, so every run
+          # (and every re-run) uses exactly SDK 10.0.101 with runtime 10.0.1.
+          DOTNET_INSTALL_DIR: ${{ runner.temp }}/dotnet
         with:
-          global-json-file: global.json
+          dotnet-version: 10.0.101
+          skip-lts-prepass: true
 
       - name: Build
         run: dotnet build PerformanceAnomalies.slnx -c Release

@@ -184,6 +184,18 @@ public static class HistoryWriter
                 Console.Error.WriteLine($"commit {i + 1}: unexpected {path}");
                 mismatches++;
             }
+
+            var meta = repo.Run("log", "-1", "--format=%P%x00%an%x00%ae%x00%cn%x00%ce%x00%aI%x00%cI%x00%B", commits[i]).Split('\0');
+            var parent = i == 0 ? History.BaseSha : commits[i - 1];
+            var date = History.DateOf(i + 1);
+            var expectedMessage = History.Message(History.Plan[i], c => commits[c - 1]);
+            if (meta[0].Trim() != parent) { Console.Error.WriteLine($"commit {i + 1}: parent {meta[0].Trim()} != {parent}"); mismatches++; }
+            if (meta[1] != History.AuthorName || meta[2] != History.AuthorEmail || meta[3] != History.AuthorName || meta[4] != History.AuthorEmail)
+            { Console.Error.WriteLine($"commit {i + 1}: author/committer identity differs"); mismatches++; }
+            if (DateTimeOffset.Parse(meta[5]) != date || DateTimeOffset.Parse(meta[6]) != date)
+            { Console.Error.WriteLine($"commit {i + 1}: dates differ"); mismatches++; }
+            if (meta[7].TrimEnd('\n') != expectedMessage.TrimEnd('\n'))
+            { Console.Error.WriteLine($"commit {i + 1}: commit message differs"); mismatches++; }
         }
         return mismatches;
     }

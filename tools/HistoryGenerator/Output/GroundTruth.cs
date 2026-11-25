@@ -73,7 +73,7 @@ public static class GroundTruth
                     if (before == after) continue;
                     events.Add(Make(scenario, ++counter, test, target, ramp.Start, ShaOf, Kinds.RampStep == rampChange.Kind ? "ramp" : rampChange.Kind,
                         rampChange.Direction ?? DirectionOf(before, after), rampChange.Tier, before, after,
-                        ramp.Start, ramp.End + 5, null, $"{scenario.Id}@ramp",
+                        ramp.Start, Math.Min(History.Commits, ramp.End + 5), null, $"{scenario.Id}@ramp",
                         scenario.Changes.Where(ch => ch.IsRampStep).SelectMany(ch => CulpritPaths(scenario, ch.Commit, Snap)).Distinct().ToList(),
                         $"{scenario.Changes.Count(ch => ch.IsRampStep)} gradual steps between {ramp.Start} and {ramp.End}",
                         "Gradual change; any alert inside the window counts."));
@@ -90,6 +90,13 @@ public static class GroundTruth
                     var before = scenario.Expected(test, target, c - 1);
                     var after = scenario.Expected(test, target, c);
                     if (before is Dist.Absent && after is Dist.Absent) continue;
+                    if (change.Kind == Kinds.TestUnskipped &&
+                        scenario.Changes.LastOrDefault(x => x.Kind == Kinds.TestSkipped && x.Commit < c) is { } skip &&
+                        scenario.Expected(test, target, skip.Commit - 1) != after)
+                    {
+                        // The test returns at a different level; that change is the hidden step's event, not a no-op.
+                        continue;
+                    }
                     var unchanged = before == after;
                     var kind = unchanged && change.Kind != Kinds.Decoy ? "none" : change.Kind;
                     var direction = unchanged ? Directions.Neutral
@@ -103,6 +110,20 @@ public static class GroundTruth
             }
         }
         return events;
+    }
+
+    /// <summary>A must_not point must never lie inside the acceptance window of a positive event of the same series.</summary>
+    public static List<string> Overlaps(IReadOnlyList<AtomicEvent> events)
+    {
+        var errors = new List<string>();
+        foreach (var group in events.GroupBy(e => (e.Test, e.Target)))
+        {
+            var positives = group.Where(e => e.Tier != Tiers.MustNot).ToList();
+            foreach (var negative in group.Where(e => e.Tier == Tiers.MustNot))
+            foreach (var positive in positives.Where(p => negative.Commit >= p.WindowFrom && negative.Commit <= p.WindowTo))
+                errors.Add($"{negative.EventId} ({negative.Kind}@{negative.Commit}) is inside the window [{positive.WindowFrom},{positive.WindowTo}] of {positive.EventId} for {group.Key.Test} on {group.Key.Target}");
+        }
+        return errors;
     }
 
     private static (int From, int To) Window(Scenario scenario, Change change)
@@ -337,6 +358,16 @@ public static class GroundTruth
         sb.AppendLine();
         sb.AppendLine("Tiers: `must` (a competent detector should find it), `should`, `optional` (at or below the noise floor),");
         sb.AppendLine("`must_not` (no change happened for this test/target; any alert is a false positive).");
+        sb.AppendLine();
+        sb.AppendLine("Measurement notes:");
+        sb.AppendLine();
+        sb.AppendLine("- Model values exclude harness overhead. Measured durations are typically 0-2 ms above the model, and every");
+        sb.AppendLine("  simulated call has about 3% multiplicative jitter.");
+        sb.AppendLine("- Tests below about 3 ms can show +0.5-1 ms in runs where their class happens to start in the first parallel");
+        sb.AppendLine("  batch of the test run. Which classes start first varies from run to run; it is not a change.");
+        sb.AppendLine("- `cpu×N` (real CPU work) has no absolute value; only the ratio between segments is part of the ground truth.");
+        sb.AppendLine("- Seeded draws (uniform, mixture, tail) are exact per run: `expected-durations.csv` has the realized value for run");
+        sb.AppendLine("  attempt 1, including the noisy-machine factor from `bad-runners.json`.");
         sb.AppendLine();
         foreach (var group in Catalog.All.GroupBy(s => s.Category))
         {
