@@ -17,6 +17,7 @@ public sealed class CheckoutValidator
         new("max-quantity-per-sku", RuleCheckCostMs),
         new("embargoed-destination", RuleCheckCostMs),
         new("po-box-courier", RuleCheckCostMs),
+        new("age-restricted-items", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
