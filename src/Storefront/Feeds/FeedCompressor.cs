@@ -5,7 +5,7 @@ namespace Storefront.Feeds;
 /// <summary>Compresses product feeds before they are published.</summary>
 public static class FeedCompressor
 {
-    private static readonly string[] Variants = ["default", "partners"];
+    private static readonly string[] Variants = ["eu-west", "eu-central", "us-east", "ap-south"];
 
     public static IReadOnlyDictionary<string, int> Compress(byte[] feed)
     {
