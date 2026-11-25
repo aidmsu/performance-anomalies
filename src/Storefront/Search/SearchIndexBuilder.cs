@@ -10,7 +10,10 @@ public sealed class SearchIndexBuilder
     private const double TokenizeCostMs = 60;
     private const double AnalyzerStageCostMs = 25;
 
-    private static readonly string[] AnalyzerStages = [];
+    private static readonly string[] AnalyzerStages =
+    [
+        "synonyms",
+    ];
 
     public IReadOnlyDictionary<string, IReadOnlyList<string>> Build(IReadOnlyList<SearchDocument> documents)
     {
