@@ -8,13 +8,13 @@ public sealed record OrderConfirmation(string OrderId, string Email, string Lang
 public sealed class NotificationDispatcher
 {
     private const double SmtpSubmitCostMs = 20;
-    private const double LegacyTemplateCostMs = 5;
+    private const double TemplateEngineCostMs = 130;
 
     public string SendOrderConfirmation(OrderConfirmation confirmation)
     {
         ArgumentNullException.ThrowIfNull(confirmation);
-        Compute.Run("render-legacy-template", LegacyTemplateCostMs);
-        var subject = $"Order {confirmation.OrderId} confirmed";
+        SimulatedNetwork.Call("template-engine/render/order-confirmation", TemplateEngineCostMs);
+        var subject = $"[{confirmation.Language}] Order {confirmation.OrderId} confirmed";
         SimulatedNetwork.Call("smtp-relay", SmtpSubmitCostMs);
         return subject;
     }
