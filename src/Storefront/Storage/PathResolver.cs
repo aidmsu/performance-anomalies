@@ -5,13 +5,13 @@ namespace Storefront.Storage;
 /// <summary>Resolves user-supplied export paths inside the storage root.</summary>
 public static class PathResolver
 {
-    private const double ManagedCanonicalizationCostMs = 60;
 
     public static string Resolve(string root, string relative)
     {
         ArgumentException.ThrowIfNullOrEmpty(root);
         ArgumentException.ThrowIfNullOrEmpty(relative);
-        Compute.Run("canonicalize-path", ManagedCanonicalizationCostMs);
+        // realpath(3) on Linux, GetFinalPathNameByHandle on Windows, CFURL on macOS.
+        SimulatedStorage.Read(root, PlatformCost.Select(linux: 25, windows: 150, macOS: 60));
         var segments = new Stack<string>();
         foreach (var part in relative.Replace('\\', '/').Split('/', StringSplitOptions.RemoveEmptyEntries))
         {
