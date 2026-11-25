@@ -16,6 +16,8 @@ public sealed class ProductFeedBuilder
         foreach (var item in items) xml.Append("<item sku=\"").Append(item.Sku).Append("\"/>");
         xml.Append("</feed>");
         Compute.Run("serialize-feed", SerializeCostMs);
+        // Schema validation goes through the platform XML stack, whose speed differs per OS.
+        Compute.Run("validate-feed-schema", PlatformCost.Select(linux: 15, windows: 120, macOS: 30));
         return xml.ToString();
     }
 }
