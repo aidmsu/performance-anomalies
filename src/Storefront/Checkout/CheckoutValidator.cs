@@ -31,6 +31,7 @@ public sealed class CheckoutValidator
         new("delivery-slot-available", RuleCheckCostMs),
         new("warehouse-cutoff", RuleCheckCostMs),
         new("house-number-present", RuleCheckCostMs),
+        new("export-license", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
