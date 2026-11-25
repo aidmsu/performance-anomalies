@@ -10,14 +10,17 @@ public sealed record FeedImportResult(int Imported, IReadOnlyList<string> Reject
 public sealed class CatalogFeedImporter
 {
     private const double ParseCostMs = 20;
-    private const double BulkUpsertCostMs = 50;
+    private const double RowUpsertCostMs = 6;
 
     public FeedImportResult Import(IReadOnlyList<CatalogFeedRow> rows)
     {
         ArgumentNullException.ThrowIfNull(rows);
         Compute.Run("parse-catalog-feed", ParseCostMs);
         var rejected = rows.Where(r => r.Price <= 0).Select(r => r.Sku).ToList();
-        SimulatedDatabase.Execute("merge into catalog using @rows", BulkUpsertCostMs);
+        foreach (var row in rows)
+        {
+            SimulatedDatabase.Execute("merge into catalog using @row", RowUpsertCostMs);
+        }
         return new FeedImportResult(rows.Count - rejected.Count, rejected);
     }
 }
