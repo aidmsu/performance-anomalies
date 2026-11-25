@@ -16,6 +16,7 @@ public sealed class ShippingLabelPrinter
         "sender-phone",
         "return-barcode",
         "package-count",
+        "delivery-instructions",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
