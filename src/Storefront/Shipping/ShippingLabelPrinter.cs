@@ -14,6 +14,7 @@ public sealed class ShippingLabelPrinter
     [
         "customs-tariff-code",
         "sender-phone",
+        "return-barcode",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
