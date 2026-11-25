@@ -9,6 +9,7 @@ public sealed class FraudScorer
 {
     private const double RiskEngineFastestMs = 90;
     private const double RiskEngineSpreadMs = 60;
+    private const double DeviceReputationCostMs = 30;
 
     public int Score(FraudCheck check)
     {
@@ -16,6 +17,8 @@ public sealed class FraudScorer
         var responseTime = RiskEngineFastestMs + Workload.Random("FraudScorer.Score").NextDouble() * RiskEngineSpreadMs;
         SimulatedNetwork.Call("risk-engine/score", responseTime);
         var score = check.Amount > 1000 ? 40 : 10;
+        SimulatedNetwork.Call("device-reputation/lookup", DeviceReputationCostMs);
+        if (check.DeviceId.StartsWith("emu-", StringComparison.Ordinal)) score += 30;
         return Math.Min(score, 100);
     }
 }
