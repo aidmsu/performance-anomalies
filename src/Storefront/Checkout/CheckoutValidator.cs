@@ -22,6 +22,7 @@ public sealed class CheckoutValidator
         new("billing-country-match", RuleCheckCostMs),
         new("duplicate-order-window", RuleCheckCostMs),
         new("gift-card-quantity", RuleCheckCostMs),
+        new("preorder-separation", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
