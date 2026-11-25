@@ -12,7 +12,10 @@ public sealed class CheckoutValidator
     private const double AddressCheckCostMs = 30;
     private const double RuleCheckCostMs = 4;
 
-    private static readonly ValidationRule[] Rules = [];
+    private static readonly ValidationRule[] Rules =
+    [
+        new("max-quantity-per-sku", RuleCheckCostMs),
+    ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
     {
