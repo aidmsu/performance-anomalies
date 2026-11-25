@@ -15,6 +15,7 @@ public sealed class CheckoutValidator
     private static readonly ValidationRule[] Rules =
     [
         new("max-quantity-per-sku", RuleCheckCostMs),
+        new("embargoed-destination", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
