@@ -100,7 +100,7 @@ public static class Validator
             if (cpu.Count > 0)
             {
                 var k = Median(cpu.Select(p => p.Measured / ((Dist.CpuBound)p.Dist).Units).ToList());
-                Check(cpu.Select(p => (p.Commit, p.Measured, k * ((Dist.CpuBound)p.Dist).Units)).ToList(), CpuRelTol, 3, ref status, details);
+                Check(cpu.Select(p => (p.Commit, p.Measured, k * ((Dist.CpuBound)p.Dist).Units)).ToList(), CpuRelTol, 3, ref status, details, allowOverhead: false);
                 var segments = cpu.GroupBy(p => ((Dist.CpuBound)p.Dist).Units).OrderBy(g => g.Key).ToList();
                 if (segments.Count > 1)
                 {
@@ -134,8 +134,13 @@ public static class Validator
         return failures == 0 ? 0 : 1;
     }
 
-    private static void Check(List<(int Commit, double Measured, double Expected)> points, double relTol, double absTol, ref string status, List<string> details)
+    private static void Check(List<(int Commit, double Measured, double Expected)> points, double relTol, double absTol, ref string status, List<string> details, bool allowOverhead = true)
     {
+        // A constant per-test overhead (JIT, first-call costs inside the timed region) is not a change; it is
+        // estimated per series, reported, and removed before the per-point and shift checks.
+        var overhead = allowOverhead ? Math.Clamp(Median(points.Select(p => p.Measured - p.Expected).ToList()), 0, 10) : 0;
+        if (overhead > absTol) details.Add($"constant overhead +{overhead:0.0} ms");
+        points = points.Select(p => (p.Commit, Math.Max(p.Measured - overhead, 0.05), p.Expected)).ToList();
         bool Within(double m, double e) => Math.Abs(Math.Log(m / e)) <= relTol || Math.Abs(m - e) <= absTol;
         var outliers = points.Where(p => !Within(p.Measured, p.Expected)).ToList();
         if (outliers.Count > 0)

@@ -424,7 +424,7 @@ public sealed class RegFanout : MultiTestScenario
                     {
                         var json = new OrderApi().{{op.Method}}("SO-100042");
 
-                        Assert.Contains("\"orderId\":\"SO-100042\"", json);
+                        Assert.Contains("\"orderId\":\"SO-100042\"", json, StringComparison.Ordinal);
                     }
                 """));
             return $$"""

@@ -1,19 +1,30 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO.Compression;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace Storefront.Infrastructure;
 
-/// <summary>Touches shared infrastructure once so that start-up costs are paid before the first test runs.</summary>
+/// <summary>
+/// Touches shared infrastructure and compiles every method of the given assemblies once, so that start-up and JIT
+/// costs are paid before the first test runs instead of inside whichever test happens to run first.
+/// </summary>
 public static class Warmup
 {
     private static int _done;
 
-    public static void Run()
+    public static void Run(params Assembly[] assemblies)
     {
+        ArgumentNullException.ThrowIfNull(assemblies);
         if (Interlocked.Exchange(ref _done, 1) == 1) return;
+
+        foreach (var assembly in assemblies.Prepend(typeof(Warmup).Assembly).Distinct())
+        {
+            PrepareMethods(assembly);
+        }
 
         var stopwatch = Stopwatch.StartNew();
         for (var i = 0; i < 3; i++)
@@ -40,6 +51,38 @@ public static class Warmup
         using (var deflate = new DeflateStream(buffer, CompressionLevel.Optimal))
         {
             deflate.Write(new byte[4096]);
+        }
+    }
+
+    private static void PrepareMethods(Assembly assembly)
+    {
+        Type?[] types;
+        try
+        {
+            types = assembly.GetTypes();
+        }
+        catch (ReflectionTypeLoadException ex)
+        {
+            types = ex.Types;
+        }
+
+        const BindingFlags All = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic |
+                                 BindingFlags.Instance | BindingFlags.Static;
+        foreach (var type in types)
+        {
+            if (type is null || type.ContainsGenericParameters) continue;
+            foreach (var method in type.GetMethods(All).Cast<MethodBase>().Concat(type.GetConstructors(All)))
+            {
+                if (method.IsAbstract || method.ContainsGenericParameters) continue;
+                try
+                {
+                    RuntimeHelpers.PrepareMethod(method.MethodHandle);
+                }
+                catch (Exception)
+                {
+                    // Some methods (for example P/Invoke stubs) cannot be prepared; they are compiled on first use.
+                }
+            }
         }
     }
 }

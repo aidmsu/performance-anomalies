@@ -270,7 +270,7 @@ public sealed class CtlHeavyTail : SingleTestScenario
                     var top = new RecommendationEngine().TopFor("customer-7", 5);
 
                     Assert.Equal(5, top.Count);
-                    Assert.All(top, sku => Assert.StartsWith("SKU-", sku));
+                    Assert.All(top, sku => Assert.StartsWith("SKU-", sku, StringComparison.Ordinal));
                 }
             }
             """);

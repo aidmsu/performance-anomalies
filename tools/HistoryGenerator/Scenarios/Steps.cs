@@ -97,9 +97,9 @@ public sealed class RegStepLarge : SingleTestScenario
                     var pdf = new InvoiceRenderer().RenderPdf(invoice);
 
                     var text = Encoding.ASCII.GetString(pdf);
-                    Assert.StartsWith("%PDF", text);
-                    Assert.Contains("Desk lamp x2 79.80", text);
-                    Assert.EndsWith("%%EOF\n", text);
+                    Assert.StartsWith("%PDF", text, StringComparison.Ordinal);
+                    Assert.Contains("Desk lamp x2 79.80", text, StringComparison.Ordinal);
+                    Assert.EndsWith("%%EOF\n", text, StringComparison.Ordinal);
                 }
             }
             """);
@@ -461,7 +461,7 @@ public sealed class RegLate : SingleTestScenario
                 {
                     var subject = new NotificationDispatcher().SendOrderConfirmation(new OrderConfirmation("SO-100042", "ada@example.com", "en"));
 
-                    Assert.Contains("SO-100042", subject);
+                    Assert.Contains("SO-100042", subject, StringComparison.Ordinal);
                 }
             }
             """);
@@ -870,7 +870,7 @@ public sealed class RegWindowsOnly : SingleTestScenario
                 {
                     var path = new AttachmentStore().Save(new Attachment("photo.jpg", [1, 2, 3]));
 
-                    Assert.EndsWith("/photo.jpg", path);
+                    Assert.EndsWith("/photo.jpg", path, StringComparison.Ordinal);
                 }
             }
             """);
@@ -1312,8 +1312,8 @@ public sealed class RegParamCase : MultiTestScenario
                 {
                     var text = OrderDateFormatter.Format(new DateOnly(2026, 3, 14), culture);
 
-                    Assert.Contains("2026", text);
-                    Assert.Contains("14", text);
+                    Assert.Contains("2026", text, StringComparison.Ordinal);
+                    Assert.Contains("14", text, StringComparison.Ordinal);
                 }
             }
             """);
