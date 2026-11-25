@@ -18,9 +18,14 @@ public sealed class SalesReportExporter
         ArgumentNullException.ThrowIfNull(lines);
         SimulatedDatabase.Query("select * from sales where day = current_date", QueryCostMs);
         var csv = new StringBuilder("sku,quantity,net,tax\n");
+        var breakdowns = new Dictionary<string, decimal>(StringComparer.Ordinal);
         foreach (var line in lines)
         {
-            var rate = TaxRate(line.TaxCategory);
+            if (!breakdowns.TryGetValue(line.TaxCategory, out var rate))
+            {
+                rate = TaxRate(line.TaxCategory);
+                breakdowns[line.TaxCategory] = rate;
+            }
             csv.Append(CultureInfo.InvariantCulture, $"{line.Sku},{line.Quantity},{line.Net:0.00},{line.Net * rate:0.00}\n");
         }
         SimulatedStorage.Write("reports/sales.csv", UploadCostMs);
