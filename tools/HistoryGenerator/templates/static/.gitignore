@@ -1,0 +1,10 @@
+bin/
+obj/
+TestResults/
+replay-results/
+ci-results/
+.vs/
+.idea/
+*.user
+*.suo
+.DS_Store
