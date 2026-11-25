@@ -14,6 +14,7 @@ public sealed class SearchIndexBuilder
     [
         "synonyms",
         "attributes",
+        "phonetic",
     ];
 
     public IReadOnlyDictionary<string, IReadOnlyList<string>> Build(IReadOnlyList<SearchDocument> documents)
