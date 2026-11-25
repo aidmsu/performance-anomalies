@@ -23,6 +23,7 @@ public sealed class ShippingLabelPrinter
         "service-level",
         "weight-imperial",
         "country-of-origin",
+        "insured-value",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
