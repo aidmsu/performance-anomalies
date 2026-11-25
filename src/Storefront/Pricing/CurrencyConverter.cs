@@ -7,6 +7,7 @@ namespace Storefront.Pricing;
 public static class CurrencyConverter
 {
     private const double RateLookupCostMs = 40;
+    private const double ExchangeRoundingCostMs = 12;
 
     private static readonly IReadOnlyDictionary<string, (decimal Rate, int Decimals)> Rates = new Dictionary<string, (decimal, int)>
     {
@@ -20,6 +21,11 @@ public static class CurrencyConverter
     {
         var (rate, decimals) = Rates[currency];
         SimulatedNetwork.Call($"fx-rates/{amount.Currency}/{currency}", RateLookupCostMs);
+        if (decimals == 3)
+        {
+            // Three-decimal currencies are rounded with the rules published by the exchange.
+            SimulatedNetwork.Call($"fx-rates/{currency}/rounding-rules", ExchangeRoundingCostMs);
+        }
         return new Money(Math.Round(amount.Amount * rate, decimals, MidpointRounding.ToEven), currency);
     }
 }
