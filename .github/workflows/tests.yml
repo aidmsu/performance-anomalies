@@ -1,0 +1,83 @@
+name: tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: "1"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+  NUGET_XMLDOC_MODE: skip
+
+jobs:
+  test:
+    name: test (${{ matrix.target }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: linux-x64
+            runner: ubuntu-24.04
+          - target: linux-arm64
+            runner: ubuntu-24.04-arm
+          - target: windows-x64
+            runner: windows-2025
+          - target: macos-arm64
+            runner: macos-15
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v6
+        env:
+          # A private install directory hides the newer runtimes preinstalled on the runner image, so every run
+          # (and every re-run) uses exactly SDK 10.0.101 with runtime 10.0.1.
+          DOTNET_INSTALL_DIR: ${{ runner.temp }}/dotnet
+        with:
+          dotnet-version: 10.0.101
+          skip-lts-prepass: true
+
+      - name: Build
+        run: dotnet build PerformanceAnomalies.slnx -c Release
+
+      - name: Unit tests
+        run: >-
+          dotnet test tests/Storefront.UnitTests/Storefront.UnitTests.csproj -c Release --no-build
+          --results-directory TestResults --blame-hang-timeout 2m
+          --logger "trx;LogFileName=Storefront.UnitTests.trx"
+          --logger "junit;LogFileName=Storefront.UnitTests.junit.xml"
+          --logger "console;verbosity=normal"
+
+      - name: Integration tests
+        if: ${{ !cancelled() }}
+        run: >-
+          dotnet test tests/Storefront.IntegrationTests/Storefront.IntegrationTests.csproj -c Release --no-build
+          --results-directory TestResults --blame-hang-timeout 2m
+          --logger "trx;LogFileName=Storefront.IntegrationTests.trx"
+          --logger "junit;LogFileName=Storefront.IntegrationTests.junit.xml"
+          --logger "console;verbosity=normal"
+
+      - name: Summarize test durations
+        if: ${{ !cancelled() }}
+        run: dotnet run --file build/TestResultsSummary.cs -- TestResults
+
+      - name: Upload test results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-results-${{ matrix.target }}-a${{ github.run_attempt }}
+          path: TestResults/
+          if-no-files-found: error
+          retention-days: 90

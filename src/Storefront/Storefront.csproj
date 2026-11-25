@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Storefront</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources/**/*" LogicalName="Storefront.Resources.%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>
