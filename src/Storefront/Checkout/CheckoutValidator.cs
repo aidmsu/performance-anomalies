@@ -36,6 +36,7 @@ public sealed class CheckoutValidator
         new("loyalty-redemption-cap", RuleCheckCostMs),
         new("marketplace-seller-active", RuleCheckCostMs),
         new("parcel-weight-limit", RuleCheckCostMs),
+        new("lithium-battery-rules", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
