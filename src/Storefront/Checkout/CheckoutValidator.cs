@@ -23,6 +23,7 @@ public sealed class CheckoutValidator
         new("duplicate-order-window", RuleCheckCostMs),
         new("gift-card-quantity", RuleCheckCostMs),
         new("preorder-separation", RuleCheckCostMs),
+        new("business-vat-id", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
