@@ -32,6 +32,7 @@ public sealed class CheckoutValidator
         new("warehouse-cutoff", RuleCheckCostMs),
         new("house-number-present", RuleCheckCostMs),
         new("export-license", RuleCheckCostMs),
+        new("subscription-overlap", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
