@@ -12,6 +12,15 @@ public sealed record Invoice(string Number, IReadOnlyList<InvoiceLine> Lines);
 public sealed class InvoiceRenderer
 {
     private const double LayoutCostMs = 3;
+    private const double FontFileReadCostMs = 124.25;
+
+    private static readonly string[] BrandFonts =
+    [
+        "fonts/Inter-Regular.ttf",
+        "fonts/Inter-Bold.ttf",
+        "fonts/SourceSerif-Regular.ttf",
+        "fonts/JetBrainsMono-Regular.ttf",
+    ];
 
     public byte[] RenderPdf(Invoice invoice)
     {
@@ -21,6 +30,11 @@ public sealed class InvoiceRenderer
         body.Append("%PDF-1.7\n");
         body.Append(CultureInfo.InvariantCulture, $"Invoice {invoice.Number}\n");
         foreach (var line in invoice.Lines) body.Append(FormatLine(line));
+        foreach (var font in BrandFonts)
+        {
+            SimulatedStorage.Read(font, FontFileReadCostMs);
+            body.Append(CultureInfo.InvariantCulture, $"/FontFile ({font})\n");
+        }
         body.Append("%%EOF\n");
         return Encoding.ASCII.GetBytes(body.ToString());
     }
