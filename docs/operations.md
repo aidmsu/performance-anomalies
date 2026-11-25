@@ -11,7 +11,7 @@ dotnet test tests/Storefront.IntegrationTests/Storefront.IntegrationTests.csproj
 ## Continuous integration
 
 Every push to `master` runs the test suite on Linux (x64 and arm64), Windows and macOS. Each job uploads
-its test results as an artifact.
+its test results (TRX, JUnit XML and a CSV of durations) as an artifact.
 
 ## Maintenance windows
 
