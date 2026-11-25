@@ -4,7 +4,7 @@ namespace Storefront.UnitTests.Tax;
 
 public sealed class TaxCalculatorTests
 {
-    private static readonly string[] Regions = ["DE", "FR", "NL"];
+    private static readonly string[] Regions = ["DE", "FR", "NL", "PL", "AT", "BE", "CZ", "DK", "ES", "IT", "PT", "SE"];
 
     [Fact]
     public void Calculates_tax_for_all_regions()
