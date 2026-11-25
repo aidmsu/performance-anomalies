@@ -8,6 +8,7 @@ public sealed record SearchHit(string Sku, string Title, double Rating);
 public sealed class ProductSearchService
 {
     private const double SearchQueryCostMs = 40;
+    private const double ReviewQueryCostMs = 12;
 
     private static readonly (string Sku, string Title)[] Catalog = Enumerable.Range(1, 30)
         .Select(i => ($"HOME-{i:000000}-01", i % 2 == 0 ? $"Oak lamp {i}" : $"Brass lamp {i}"))
@@ -20,6 +21,7 @@ public sealed class ProductSearchService
         var hits = new List<SearchHit>();
         foreach (var (sku, title) in Catalog)
         {
+            SimulatedDatabase.Query("select rating from reviews where sku = @sku", ReviewQueryCostMs);
             if (!title.Contains(keyword, StringComparison.OrdinalIgnoreCase)) continue;
             hits.Add(new SearchHit(sku, title, Rating: sku.Length % 5));
         }
