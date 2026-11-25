@@ -24,6 +24,7 @@ public sealed class ShippingLabelPrinter
         "weight-imperial",
         "country-of-origin",
         "insured-value",
+        "recycling-notice",
     ];
 
     public IReadOnlyList<string> Print(LabelRequest request)
