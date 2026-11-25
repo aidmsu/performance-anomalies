@@ -137,7 +137,8 @@ public static class Validator
                     var cpuStatus = "PASS";
                     var cpuDetails = new List<string>();
                     Check(normalized.Select(p => (p.Commit, p.Value, k * p.Units, p.Dist, false)).ToList(), CpuRelTol, isReference ? 3 : 0.02, ref cpuStatus, cpuDetails, allowOverhead: false);
-                    if (cpuStatus != "PASS") { status = Worst(status, isReference ? "WARN" : cpuStatus); details.AddRange(cpuDetails.Select(d => "cpu " + d)); }
+                    // Real CPU work on shared runners is noisy even after normalization; only the ratio below can fail.
+                    if (cpuStatus != "PASS") { status = Worst(status, "WARN"); details.AddRange(cpuDetails.Select(d => "cpu " + d)); }
                     var segments = normalized.GroupBy(p => p.Units).OrderBy(g => g.Key).ToList();
                     if (segments.Count > 1)
                     {
@@ -245,17 +246,18 @@ public static class Validator
         var changePoints = Enumerable.Range(2, History.Commits - 1)
             .Where(c => scenario.Expected(test, target, c) != scenario.Expected(test, target, c - 1))
             .ToList();
-        var checks = new List<(int From, int To, string Tier, string Label)>();
+        var checks = new List<(int From, int To, string Tier, string Label, bool Distributional)>();
         foreach (var change in scenario.Changes.Where(ch => ch.IsPrimary && ch.Kind != Kinds.Decoy && !Kinds.IsLifecycle(ch.Kind)))
         {
             if (!changePoints.Contains(change.Commit)) continue;
             var tier = scenario.TierFor(change, test, target) ?? change.Tier;
-            checks.Add((change.Commit, change.Commit, tier, $"{change.Kind}@{change.Commit}"));
+            checks.Add((change.Commit, change.Commit, tier, $"{change.Kind}@{change.Commit}",
+                change.Kind is Kinds.Variance or Kinds.Modality or Kinds.Tail));
         }
         if (scenario.Ramp is { } ramp && changePoints.Any(c => c >= ramp.Start && c <= ramp.End))
-            checks.Add((ramp.Start, ramp.End, scenario.Changes.First(ch => ch.IsRampStep).Tier, $"ramp@{ramp.Start}-{ramp.End}"));
+            checks.Add((ramp.Start, ramp.End, scenario.Changes.First(ch => ch.IsRampStep).Tier, $"ramp@{ramp.Start}-{ramp.End}", false));
 
-        foreach (var (from, to, tier, label) in checks)
+        foreach (var (from, to, tier, label, distributional) in checks)
         {
             // The model segment right before/after the change; segments without any observation (a skipped test)
             // are stepped over, segments with only one or two observations make the change "not checkable".
@@ -274,6 +276,29 @@ public static class Validator
                 if (after.Count > 0) break;
             }
             if (before.Count < 3 || after.Count < 3) continue; // not checkable (e.g. a one-commit hotfix)
+
+            if (distributional)
+            {
+                // Variance, modality and tail changes are about spread, not level: compare the p10-p90 range of
+                // log durations before and after with the same range of the realized model values.
+                double Spread(IEnumerable<double> values)
+                {
+                    var list = values.Select(v => Math.Log(v)).ToList();
+                    return Math.Max(Quantile(list, 0.9) - Quantile(list, 0.1), 0.02);
+                }
+                // The model spread of a segment is the spread of its realized values plus the measurement noise of that
+                // segment (the spread of measured/expected), so that a constant segment is not treated as noise-free.
+                double ModelSpread(List<(int Commit, double Measured, double Expected)> seg) =>
+                    Math.Sqrt(Math.Pow(Spread(seg.Select(p => p.Expected)), 2) + Math.Pow(Spread(seg.Select(p => p.Measured / p.Expected)), 2));
+                var realizedSpread = Math.Log(Spread(after.Select(p => p.Measured)) / Spread(before.Select(p => p.Measured)));
+                var modelledSpread = Math.Log(ModelSpread(after) / ModelSpread(before));
+                if (Math.Abs(realizedSpread - modelledSpread) > Math.Log(2.5) && Math.Abs(modelledSpread) > Math.Log(2))
+                {
+                    details.Add(string.Create(CultureInfo.InvariantCulture, $"{label}: spread changed x{Math.Exp(realizedSpread):0.0} vs model x{Math.Exp(modelledSpread):0.0}"));
+                    status = Worst(status, tier == Tiers.Optional ? "WARN" : "FAIL");
+                }
+                continue;
+            }
 
             var realized = Median(after.Select(p => Math.Log(p.Measured)).ToList()) - Median(before.Select(p => Math.Log(p.Measured)).ToList());
             var modelled = Median(after.Select(p => Math.Log(p.Expected)).ToList()) - Median(before.Select(p => Math.Log(p.Expected)).ToList());

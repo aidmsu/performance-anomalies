@@ -1,0 +1,250 @@
+{
+  "description": "Runs in which every simulated cost is multiplied by the factor (a noisy CI machine). No per-test alert is expected; a run-level anomaly may be reported.",
+  "runs": [
+    {
+      "commit": 4,
+      "sha": "c609bdc1c33a6b7e3a1fff4b86e329de7fa6c39f",
+      "target": "linux-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 4,
+      "sha": "c609bdc1c33a6b7e3a1fff4b86e329de7fa6c39f",
+      "target": "macos-arm64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 5,
+      "sha": "410e4ee8916f6f8385a054bd14686af1c57e72ba",
+      "target": "linux-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 15,
+      "sha": "6577de516972dd517707ce373bea334d402fa7af",
+      "target": "windows-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 16,
+      "sha": "1068c33ab5de20369ae214bd66afe19562bb5520",
+      "target": "linux-arm64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 26,
+      "sha": "658dab79287908c8266821a84085bc0193dd9148",
+      "target": "linux-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 26,
+      "sha": "658dab79287908c8266821a84085bc0193dd9148",
+      "target": "windows-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 26,
+      "sha": "658dab79287908c8266821a84085bc0193dd9148",
+      "target": "macos-arm64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 28,
+      "sha": "b576978f8916a1082469691ed147bd995bf1af0f",
+      "target": "linux-x64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 36,
+      "sha": "d34a04faaea4361cf932d11af63eb88f8e375ee3",
+      "target": "linux-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 41,
+      "sha": "26f543151b4f9b9b334f04ff72e2d57395003905",
+      "target": "macos-arm64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 43,
+      "sha": "5812b0b89f4d9247380047213e83c4b1499e7c08",
+      "target": "linux-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 44,
+      "sha": "4464ed42995f77478784663e842499df98cb8586",
+      "target": "linux-arm64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 44,
+      "sha": "4464ed42995f77478784663e842499df98cb8586",
+      "target": "macos-arm64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 45,
+      "sha": "9c6d2ffc62aacb5900d6b8452f6967105043d517",
+      "target": "linux-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 46,
+      "sha": "d2ba8f1cdf694b30a7386fe7942bf6a4d68761ea",
+      "target": "macos-arm64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 47,
+      "sha": "ff141c852b6d365093d166e699f375bfa3e8e683",
+      "target": "macos-arm64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 50,
+      "sha": "7a0670ca3e806b8b6dce7ba349a60a6c1c11922d",
+      "target": "windows-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 51,
+      "sha": "0f50067aa006d2e6ed746578f9d827180604642f",
+      "target": "linux-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 53,
+      "sha": "52d00bda65ddeee6700e6db465a6322dc334d3c5",
+      "target": "linux-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 54,
+      "sha": "2ec73c7bf84695f5f654c38e1eef53c0e6463757",
+      "target": "windows-x64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 55,
+      "sha": "449c24020e255c83d87116a9aee0cd9e57fd3105",
+      "target": "linux-x64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 60,
+      "sha": "b8acae83278d7ca6ec4c0bf1a9db241c591f50ff",
+      "target": "linux-arm64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 64,
+      "sha": "aada3725c1c2db5f09cf771a2e45e48931041ca9",
+      "target": "linux-arm64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 78,
+      "sha": "5ab17d441c6fa14bed0a37b71218b88bc14100d7",
+      "target": "windows-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 84,
+      "sha": "cfb677ce17db005af2e96f7613c6b32824e5ddb7",
+      "target": "windows-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 85,
+      "sha": "7e8cc9195711f5c60f64efe0bd84b1882888fcf5",
+      "target": "linux-x64",
+      "attempt": 2,
+      "factor": 1.35
+    },
+    {
+      "commit": 88,
+      "sha": "a14209dd24b4d2c0c27a9e7b3a21abe080c897c4",
+      "target": "linux-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 93,
+      "sha": "dcc688e070b3adf0457c7d449e4d3f1fcfd5b2f2",
+      "target": "macos-arm64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 98,
+      "sha": "53dd39aa5156b2f4fb42364e42dbc061524a7817",
+      "target": "windows-x64",
+      "attempt": 3,
+      "factor": 1.35
+    },
+    {
+      "commit": 98,
+      "sha": "53dd39aa5156b2f4fb42364e42dbc061524a7817",
+      "target": "macos-arm64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 99,
+      "sha": "165c57a9887ae5ed7d5d81c6110d35b304fda31d",
+      "target": "macos-arm64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 105,
+      "sha": "520bbbb9fbd0cf1f6c4b71c87abf93dadaa83109",
+      "target": "windows-x64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 107,
+      "sha": "036761fac2c5e9c52e71d49ab4236f7655def081",
+      "target": "windows-x64",
+      "attempt": 1,
+      "factor": 1.35
+    },
+    {
+      "commit": 114,
+      "sha": "008d3f5d9a1db307331d6fd749f797daaad16c5e",
+      "target": "linux-x64",
+      "attempt": 2,
+      "factor": 1.35
+    }
+  ]
+}

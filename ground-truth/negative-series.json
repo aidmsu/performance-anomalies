@@ -1,0 +1,2123 @@
+{
+  "description": "(test, target) series whose duration model never changes. Every alert on them is a false positive.",
+  "series": [
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Formatting.CurrencyFormatterTests.Formats_amounts_with_currency_symbols",
+      "target": "linux-x64",
+      "dist": "15 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Formatting.CurrencyFormatterTests.Formats_amounts_with_currency_symbols",
+      "target": "linux-arm64",
+      "dist": "15 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Formatting.CurrencyFormatterTests.Formats_amounts_with_currency_symbols",
+      "target": "windows-x64",
+      "dist": "15 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Formatting.CurrencyFormatterTests.Formats_amounts_with_currency_symbols",
+      "target": "macos-arm64",
+      "dist": "15 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Catalog.SkuBatchParserTests.Parses_sku_batch",
+      "target": "linux-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Catalog.SkuBatchParserTests.Parses_sku_batch",
+      "target": "linux-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Catalog.SkuBatchParserTests.Parses_sku_batch",
+      "target": "windows-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Catalog.SkuBatchParserTests.Parses_sku_batch",
+      "target": "macos-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Tax.TaxTableTests.Loads_tax_table",
+      "target": "linux-x64",
+      "dist": "250 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Tax.TaxTableTests.Loads_tax_table",
+      "target": "linux-arm64",
+      "dist": "250 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Tax.TaxTableTests.Loads_tax_table",
+      "target": "windows-x64",
+      "dist": "250 ms"
+    },
+    {
+      "scenario": "CTL-STABLE",
+      "test": "Storefront.UnitTests.Tax.TaxTableTests.Loads_tax_table",
+      "target": "macos-arm64",
+      "dist": "250 ms"
+    },
+    {
+      "scenario": "CTL-NOISY",
+      "test": "Storefront.UnitTests.Shipping.ShippingQuoteTests.Returns_quote_for_domestic_parcel",
+      "target": "linux-x64",
+      "dist": "U(55..105) ms"
+    },
+    {
+      "scenario": "CTL-NOISY",
+      "test": "Storefront.UnitTests.Shipping.ShippingQuoteTests.Returns_quote_for_domestic_parcel",
+      "target": "linux-arm64",
+      "dist": "U(55..105) ms"
+    },
+    {
+      "scenario": "CTL-NOISY",
+      "test": "Storefront.UnitTests.Shipping.ShippingQuoteTests.Returns_quote_for_domestic_parcel",
+      "target": "windows-x64",
+      "dist": "U(55..105) ms"
+    },
+    {
+      "scenario": "CTL-NOISY",
+      "test": "Storefront.UnitTests.Shipping.ShippingQuoteTests.Returns_quote_for_domestic_parcel",
+      "target": "macos-arm64",
+      "dist": "U(55..105) ms"
+    },
+    {
+      "scenario": "CTL-HEAVY-TAIL",
+      "test": "Storefront.UnitTests.Recommendations.RecommendationEngineTests.Returns_top_recommendations",
+      "target": "linux-x64",
+      "dist": "60 ms, 5% → 300 ms"
+    },
+    {
+      "scenario": "CTL-HEAVY-TAIL",
+      "test": "Storefront.UnitTests.Recommendations.RecommendationEngineTests.Returns_top_recommendations",
+      "target": "linux-arm64",
+      "dist": "60 ms, 5% → 300 ms"
+    },
+    {
+      "scenario": "CTL-HEAVY-TAIL",
+      "test": "Storefront.UnitTests.Recommendations.RecommendationEngineTests.Returns_top_recommendations",
+      "target": "windows-x64",
+      "dist": "60 ms, 5% → 300 ms"
+    },
+    {
+      "scenario": "CTL-HEAVY-TAIL",
+      "test": "Storefront.UnitTests.Recommendations.RecommendationEngineTests.Returns_top_recommendations",
+      "target": "macos-arm64",
+      "dist": "60 ms, 5% → 300 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Adds_amounts_in_the_same_currency",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Adds_amounts_in_the_same_currency",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Adds_amounts_in_the_same_currency",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Adds_amounts_in_the_same_currency",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rejects_mixed_currencies",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rejects_mixed_currencies",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rejects_mixed_currencies",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rejects_mixed_currencies",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rounds_half_to_even_when_multiplying",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rounds_half_to_even_when_multiplying",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rounds_half_to_even_when_multiplying",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Rounds_half_to_even_when_multiplying",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Formats_with_invariant_culture",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Formats_with_invariant_culture",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Formats_with_invariant_culture",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Formats_with_invariant_culture",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Zero_is_the_identity_for_addition",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Zero_is_the_identity_for_addition",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Zero_is_the_identity_for_addition",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.MoneyTests.Zero_is_the_identity_for_addition",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Parses_valid_sku",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Parses_valid_sku",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Parses_valid_sku",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Parses_valid_sku",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Normalizes_category_to_upper_case",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Normalizes_category_to_upper_case",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Normalizes_category_to_upper_case",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Normalizes_category_to_upper_case",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Round_trips_to_string",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Round_trips_to_string",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Round_trips_to_string",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Round_trips_to_string",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_sku_without_variant",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_sku_without_variant",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_sku_without_variant",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_sku_without_variant",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_empty_input",
+      "target": "linux-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_empty_input",
+      "target": "linux-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_empty_input",
+      "target": "windows-x64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-MICRO",
+      "test": "Storefront.UnitTests.Domain.SkuTests.Rejects_empty_input",
+      "target": "macos-arm64",
+      "dist": "<1 ms"
+    },
+    {
+      "scenario": "CTL-CPU-BOUND",
+      "test": "Storefront.UnitTests.Security.CatalogHasherTests.Hashes_catalog_export",
+      "target": "linux-x64",
+      "dist": "cpu×1"
+    },
+    {
+      "scenario": "CTL-CPU-BOUND",
+      "test": "Storefront.UnitTests.Security.CatalogHasherTests.Hashes_catalog_export",
+      "target": "linux-arm64",
+      "dist": "cpu×1"
+    },
+    {
+      "scenario": "CTL-CPU-BOUND",
+      "test": "Storefront.UnitTests.Security.CatalogHasherTests.Hashes_catalog_export",
+      "target": "windows-x64",
+      "dist": "cpu×1"
+    },
+    {
+      "scenario": "CTL-CPU-BOUND",
+      "test": "Storefront.UnitTests.Security.CatalogHasherTests.Hashes_catalog_export",
+      "target": "macos-arm64",
+      "dist": "cpu×1"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Finds_customer_by_email",
+      "target": "linux-x64",
+      "dist": "17.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Finds_customer_by_email",
+      "target": "linux-arm64",
+      "dist": "17.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Finds_customer_by_email",
+      "target": "windows-x64",
+      "dist": "17.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Finds_customer_by_email",
+      "target": "macos-arm64",
+      "dist": "17.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Lists_customers_by_segment",
+      "target": "linux-x64",
+      "dist": "1.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Lists_customers_by_segment",
+      "target": "linux-arm64",
+      "dist": "1.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Lists_customers_by_segment",
+      "target": "windows-x64",
+      "dist": "1.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Lists_customers_by_segment",
+      "target": "macos-arm64",
+      "dist": "1.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Counts_active_customers",
+      "target": "linux-x64",
+      "dist": "7.72 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Counts_active_customers",
+      "target": "linux-arm64",
+      "dist": "7.72 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Counts_active_customers",
+      "target": "windows-x64",
+      "dist": "10.81 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Counts_active_customers",
+      "target": "macos-arm64",
+      "dist": "6.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Resolves_customer_alias",
+      "target": "linux-x64",
+      "dist": "18.78 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Resolves_customer_alias",
+      "target": "linux-arm64",
+      "dist": "18.78 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Resolves_customer_alias",
+      "target": "windows-x64",
+      "dist": "18.78 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Resolves_customer_alias",
+      "target": "macos-arm64",
+      "dist": "18.78 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Loads_customer_preferences",
+      "target": "linux-x64",
+      "dist": "3.53 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Loads_customer_preferences",
+      "target": "linux-arm64",
+      "dist": "3.53 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Loads_customer_preferences",
+      "target": "windows-x64",
+      "dist": "3.53 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Customers.CustomerDirectoryTests.Loads_customer_preferences",
+      "target": "macos-arm64",
+      "dist": "3.53 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Validates_postal_code",
+      "target": "linux-x64",
+      "dist": "2.04 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Validates_postal_code",
+      "target": "linux-arm64",
+      "dist": "2.04 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Validates_postal_code",
+      "target": "windows-x64",
+      "dist": "2.04 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Validates_postal_code",
+      "target": "macos-arm64",
+      "dist": "2.04 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Lists_saved_addresses",
+      "target": "linux-x64",
+      "dist": "2.34 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Lists_saved_addresses",
+      "target": "linux-arm64",
+      "dist": "2.34 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Lists_saved_addresses",
+      "target": "windows-x64",
+      "dist": "2.34 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Lists_saved_addresses",
+      "target": "macos-arm64",
+      "dist": "2.34 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Formats_address_label",
+      "target": "linux-x64",
+      "dist": "26.26 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Formats_address_label",
+      "target": "linux-arm64",
+      "dist": "26.26 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Formats_address_label",
+      "target": "windows-x64",
+      "dist": "36.76 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Formats_address_label",
+      "target": "macos-arm64",
+      "dist": "21.01 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Geocodes_address",
+      "target": "linux-x64",
+      "dist": "18.96 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Geocodes_address",
+      "target": "linux-arm64",
+      "dist": "18.96 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Geocodes_address",
+      "target": "windows-x64",
+      "dist": "18.96 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Geocodes_address",
+      "target": "macos-arm64",
+      "dist": "18.96 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Merges_duplicate_addresses",
+      "target": "linux-x64",
+      "dist": "11.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Merges_duplicate_addresses",
+      "target": "linux-arm64",
+      "dist": "11.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Merges_duplicate_addresses",
+      "target": "windows-x64",
+      "dist": "11.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Addresses.AddressBookTests.Merges_duplicate_addresses",
+      "target": "macos-arm64",
+      "dist": "11.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Queues_review_for_moderation",
+      "target": "linux-x64",
+      "dist": "4.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Queues_review_for_moderation",
+      "target": "linux-arm64",
+      "dist": "4.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Queues_review_for_moderation",
+      "target": "windows-x64",
+      "dist": "4.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Queues_review_for_moderation",
+      "target": "macos-arm64",
+      "dist": "4.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Approves_review",
+      "target": "linux-x64",
+      "dist": "1.9 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Approves_review",
+      "target": "linux-arm64",
+      "dist": "1.9 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Approves_review",
+      "target": "windows-x64",
+      "dist": "1.9 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Approves_review",
+      "target": "macos-arm64",
+      "dist": "1.9 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Flags_abusive_review",
+      "target": "linux-x64",
+      "dist": "32.36 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Flags_abusive_review",
+      "target": "linux-arm64",
+      "dist": "32.36 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Flags_abusive_review",
+      "target": "windows-x64",
+      "dist": "45.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Flags_abusive_review",
+      "target": "macos-arm64",
+      "dist": "25.89 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Summarizes_review_ratings",
+      "target": "linux-x64",
+      "dist": "21.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Summarizes_review_ratings",
+      "target": "linux-arm64",
+      "dist": "21.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Summarizes_review_ratings",
+      "target": "windows-x64",
+      "dist": "21.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Summarizes_review_ratings",
+      "target": "macos-arm64",
+      "dist": "21.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Lists_pending_reviews",
+      "target": "linux-x64",
+      "dist": "2.24 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Lists_pending_reviews",
+      "target": "linux-arm64",
+      "dist": "2.24 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Lists_pending_reviews",
+      "target": "windows-x64",
+      "dist": "2.24 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Reviews.ReviewModerationTests.Lists_pending_reviews",
+      "target": "macos-arm64",
+      "dist": "2.24 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Registers_media_asset",
+      "target": "linux-x64",
+      "dist": "32.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Registers_media_asset",
+      "target": "linux-arm64",
+      "dist": "32.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Registers_media_asset",
+      "target": "windows-x64",
+      "dist": "32.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Registers_media_asset",
+      "target": "macos-arm64",
+      "dist": "32.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Lists_assets_for_product",
+      "target": "linux-x64",
+      "dist": "18.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Lists_assets_for_product",
+      "target": "linux-arm64",
+      "dist": "18.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Lists_assets_for_product",
+      "target": "windows-x64",
+      "dist": "18.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Lists_assets_for_product",
+      "target": "macos-arm64",
+      "dist": "18.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Tags_media_asset",
+      "target": "linux-x64",
+      "dist": "7.23 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Tags_media_asset",
+      "target": "linux-arm64",
+      "dist": "7.23 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Tags_media_asset",
+      "target": "windows-x64",
+      "dist": "10.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Tags_media_asset",
+      "target": "macos-arm64",
+      "dist": "5.78 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Archives_unused_assets",
+      "target": "linux-x64",
+      "dist": "40.4 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Archives_unused_assets",
+      "target": "linux-arm64",
+      "dist": "40.4 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Archives_unused_assets",
+      "target": "windows-x64",
+      "dist": "40.4 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Archives_unused_assets",
+      "target": "macos-arm64",
+      "dist": "40.4 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Resolves_asset_url",
+      "target": "linux-x64",
+      "dist": "28.94 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Resolves_asset_url",
+      "target": "linux-arm64",
+      "dist": "28.94 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Resolves_asset_url",
+      "target": "windows-x64",
+      "dist": "28.94 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Media.MediaLibraryTests.Resolves_asset_url",
+      "target": "macos-arm64",
+      "dist": "28.94 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Finds_supplier_by_code",
+      "target": "linux-x64",
+      "dist": "8.37 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Finds_supplier_by_code",
+      "target": "linux-arm64",
+      "dist": "8.37 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Finds_supplier_by_code",
+      "target": "windows-x64",
+      "dist": "8.37 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Finds_supplier_by_code",
+      "target": "macos-arm64",
+      "dist": "8.37 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Lists_supplier_contacts",
+      "target": "linux-x64",
+      "dist": "9.58 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Lists_supplier_contacts",
+      "target": "linux-arm64",
+      "dist": "9.58 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Lists_supplier_contacts",
+      "target": "windows-x64",
+      "dist": "9.58 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Lists_supplier_contacts",
+      "target": "macos-arm64",
+      "dist": "9.58 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Loads_payment_terms",
+      "target": "linux-x64",
+      "dist": "1.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Loads_payment_terms",
+      "target": "linux-arm64",
+      "dist": "1.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Loads_payment_terms",
+      "target": "windows-x64",
+      "dist": "1.6 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Loads_payment_terms",
+      "target": "macos-arm64",
+      "dist": "0.91 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Checks_supplier_certification",
+      "target": "linux-x64",
+      "dist": "16.81 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Checks_supplier_certification",
+      "target": "linux-arm64",
+      "dist": "16.81 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Checks_supplier_certification",
+      "target": "windows-x64",
+      "dist": "16.81 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Checks_supplier_certification",
+      "target": "macos-arm64",
+      "dist": "16.81 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Ranks_suppliers_by_lead_time",
+      "target": "linux-x64",
+      "dist": "2.89 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Ranks_suppliers_by_lead_time",
+      "target": "linux-arm64",
+      "dist": "2.89 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Ranks_suppliers_by_lead_time",
+      "target": "windows-x64",
+      "dist": "2.89 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Ranks_suppliers_by_lead_time",
+      "target": "macos-arm64",
+      "dist": "2.89 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Loads_landing_page",
+      "target": "linux-x64",
+      "dist": "12.35 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Loads_landing_page",
+      "target": "linux-arm64",
+      "dist": "12.35 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Loads_landing_page",
+      "target": "windows-x64",
+      "dist": "12.35 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Loads_landing_page",
+      "target": "macos-arm64",
+      "dist": "12.35 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_navigation_menu",
+      "target": "linux-x64",
+      "dist": "39.54 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_navigation_menu",
+      "target": "linux-arm64",
+      "dist": "39.54 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_navigation_menu",
+      "target": "windows-x64",
+      "dist": "39.54 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_navigation_menu",
+      "target": "macos-arm64",
+      "dist": "39.54 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Resolves_page_slug",
+      "target": "linux-x64",
+      "dist": "25.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Resolves_page_slug",
+      "target": "linux-arm64",
+      "dist": "25.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Resolves_page_slug",
+      "target": "windows-x64",
+      "dist": "35.24 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Resolves_page_slug",
+      "target": "macos-arm64",
+      "dist": "20.14 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Renders_page_breadcrumbs",
+      "target": "linux-x64",
+      "dist": "7.71 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Renders_page_breadcrumbs",
+      "target": "linux-arm64",
+      "dist": "7.71 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Renders_page_breadcrumbs",
+      "target": "windows-x64",
+      "dist": "7.71 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Renders_page_breadcrumbs",
+      "target": "macos-arm64",
+      "dist": "7.71 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_published_banners",
+      "target": "linux-x64",
+      "dist": "3.85 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_published_banners",
+      "target": "linux-arm64",
+      "dist": "3.85 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_published_banners",
+      "target": "windows-x64",
+      "dist": "3.85 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Content.PageCatalogTests.Lists_published_banners",
+      "target": "macos-arm64",
+      "dist": "3.85 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Loads_notification_preferences",
+      "target": "linux-x64",
+      "dist": "1.93 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Loads_notification_preferences",
+      "target": "linux-arm64",
+      "dist": "1.93 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Loads_notification_preferences",
+      "target": "windows-x64",
+      "dist": "1.93 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Loads_notification_preferences",
+      "target": "macos-arm64",
+      "dist": "1.93 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Opts_out_of_newsletter",
+      "target": "linux-x64",
+      "dist": "16.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Opts_out_of_newsletter",
+      "target": "linux-arm64",
+      "dist": "16.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Opts_out_of_newsletter",
+      "target": "windows-x64",
+      "dist": "16.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Opts_out_of_newsletter",
+      "target": "macos-arm64",
+      "dist": "16.22 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Lists_subscription_topics",
+      "target": "linux-x64",
+      "dist": "1.72 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Lists_subscription_topics",
+      "target": "linux-arm64",
+      "dist": "1.72 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Lists_subscription_topics",
+      "target": "windows-x64",
+      "dist": "2.41 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Lists_subscription_topics",
+      "target": "macos-arm64",
+      "dist": "1.38 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Applies_quiet_hours",
+      "target": "linux-x64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Applies_quiet_hours",
+      "target": "linux-arm64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Applies_quiet_hours",
+      "target": "windows-x64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Applies_quiet_hours",
+      "target": "macos-arm64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Exports_preference_history",
+      "target": "linux-x64",
+      "dist": "7.05 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Exports_preference_history",
+      "target": "linux-arm64",
+      "dist": "7.05 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Exports_preference_history",
+      "target": "windows-x64",
+      "dist": "7.05 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Preferences.PreferenceCenterTests.Exports_preference_history",
+      "target": "macos-arm64",
+      "dist": "7.05 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Changes_display_name",
+      "target": "linux-x64",
+      "dist": "5.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Changes_display_name",
+      "target": "linux-arm64",
+      "dist": "5.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Changes_display_name",
+      "target": "windows-x64",
+      "dist": "5.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Changes_display_name",
+      "target": "macos-arm64",
+      "dist": "5.13 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Enables_two_factor_login",
+      "target": "linux-x64",
+      "dist": "15.57 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Enables_two_factor_login",
+      "target": "linux-arm64",
+      "dist": "15.57 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Enables_two_factor_login",
+      "target": "windows-x64",
+      "dist": "15.57 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Enables_two_factor_login",
+      "target": "macos-arm64",
+      "dist": "15.57 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Lists_active_sessions",
+      "target": "linux-x64",
+      "dist": "18.32 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Lists_active_sessions",
+      "target": "linux-arm64",
+      "dist": "18.32 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Lists_active_sessions",
+      "target": "windows-x64",
+      "dist": "25.65 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Lists_active_sessions",
+      "target": "macos-arm64",
+      "dist": "14.66 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Rotates_api_key",
+      "target": "linux-x64",
+      "dist": "3.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Rotates_api_key",
+      "target": "linux-arm64",
+      "dist": "3.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Rotates_api_key",
+      "target": "windows-x64",
+      "dist": "3.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Rotates_api_key",
+      "target": "macos-arm64",
+      "dist": "3.12 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Loads_privacy_settings",
+      "target": "linux-x64",
+      "dist": "28.79 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Loads_privacy_settings",
+      "target": "linux-arm64",
+      "dist": "28.79 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Loads_privacy_settings",
+      "target": "windows-x64",
+      "dist": "28.79 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Accounts.AccountSettingsTests.Loads_privacy_settings",
+      "target": "macos-arm64",
+      "dist": "28.79 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_page_view",
+      "target": "linux-x64",
+      "dist": "10.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_page_view",
+      "target": "linux-arm64",
+      "dist": "10.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_page_view",
+      "target": "windows-x64",
+      "dist": "10.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_page_view",
+      "target": "macos-arm64",
+      "dist": "10.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_add_to_cart",
+      "target": "linux-x64",
+      "dist": "10.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_add_to_cart",
+      "target": "linux-arm64",
+      "dist": "10.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_add_to_cart",
+      "target": "windows-x64",
+      "dist": "10.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_add_to_cart",
+      "target": "macos-arm64",
+      "dist": "10.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Aggregates_daily_events",
+      "target": "linux-x64",
+      "dist": "3.56 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Aggregates_daily_events",
+      "target": "linux-arm64",
+      "dist": "3.56 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Aggregates_daily_events",
+      "target": "windows-x64",
+      "dist": "4.98 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Aggregates_daily_events",
+      "target": "macos-arm64",
+      "dist": "2.85 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Lists_top_search_terms",
+      "target": "linux-x64",
+      "dist": "5.38 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Lists_top_search_terms",
+      "target": "linux-arm64",
+      "dist": "5.38 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Lists_top_search_terms",
+      "target": "windows-x64",
+      "dist": "5.38 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Lists_top_search_terms",
+      "target": "macos-arm64",
+      "dist": "5.38 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Purges_expired_events",
+      "target": "linux-x64",
+      "dist": "2.32 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Purges_expired_events",
+      "target": "linux-arm64",
+      "dist": "2.32 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Purges_expired_events",
+      "target": "windows-x64",
+      "dist": "2.32 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Analytics.EventTrackerTests.Purges_expired_events",
+      "target": "macos-arm64",
+      "dist": "2.32 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Builds_newsletter_audience",
+      "target": "linux-x64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Builds_newsletter_audience",
+      "target": "linux-arm64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Builds_newsletter_audience",
+      "target": "windows-x64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Builds_newsletter_audience",
+      "target": "macos-arm64",
+      "dist": "4.16 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Schedules_newsletter",
+      "target": "linux-x64",
+      "dist": "4.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Schedules_newsletter",
+      "target": "linux-arm64",
+      "dist": "4.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Schedules_newsletter",
+      "target": "windows-x64",
+      "dist": "4.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Schedules_newsletter",
+      "target": "macos-arm64",
+      "dist": "4.03 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Renders_newsletter_preview",
+      "target": "linux-x64",
+      "dist": "4.97 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Renders_newsletter_preview",
+      "target": "linux-arm64",
+      "dist": "4.97 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Renders_newsletter_preview",
+      "target": "windows-x64",
+      "dist": "6.96 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Renders_newsletter_preview",
+      "target": "macos-arm64",
+      "dist": "3.98 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Lists_newsletter_campaigns",
+      "target": "linux-x64",
+      "dist": "21.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Lists_newsletter_campaigns",
+      "target": "linux-arm64",
+      "dist": "21.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Lists_newsletter_campaigns",
+      "target": "windows-x64",
+      "dist": "21.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Lists_newsletter_campaigns",
+      "target": "macos-arm64",
+      "dist": "21.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Counts_newsletter_bounces",
+      "target": "linux-x64",
+      "dist": "4.09 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Counts_newsletter_bounces",
+      "target": "linux-arm64",
+      "dist": "4.09 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Counts_newsletter_bounces",
+      "target": "windows-x64",
+      "dist": "4.09 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Marketing.NewsletterServiceTests.Counts_newsletter_bounces",
+      "target": "macos-arm64",
+      "dist": "4.09 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Routes_ticket_by_topic",
+      "target": "linux-x64",
+      "dist": "18.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Routes_ticket_by_topic",
+      "target": "linux-arm64",
+      "dist": "18.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Routes_ticket_by_topic",
+      "target": "windows-x64",
+      "dist": "18.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Routes_ticket_by_topic",
+      "target": "macos-arm64",
+      "dist": "18.87 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Escalates_overdue_ticket",
+      "target": "linux-x64",
+      "dist": "83.49 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Escalates_overdue_ticket",
+      "target": "linux-arm64",
+      "dist": "83.49 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Escalates_overdue_ticket",
+      "target": "windows-x64",
+      "dist": "83.49 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Escalates_overdue_ticket",
+      "target": "macos-arm64",
+      "dist": "83.49 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Lists_open_tickets",
+      "target": "linux-x64",
+      "dist": "5.34 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Lists_open_tickets",
+      "target": "linux-arm64",
+      "dist": "5.34 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Lists_open_tickets",
+      "target": "windows-x64",
+      "dist": "7.48 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Lists_open_tickets",
+      "target": "macos-arm64",
+      "dist": "4.27 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Assigns_ticket_owner",
+      "target": "linux-x64",
+      "dist": "4.5 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Assigns_ticket_owner",
+      "target": "linux-arm64",
+      "dist": "4.5 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Assigns_ticket_owner",
+      "target": "windows-x64",
+      "dist": "4.5 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Assigns_ticket_owner",
+      "target": "macos-arm64",
+      "dist": "4.5 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Closes_resolved_tickets",
+      "target": "linux-x64",
+      "dist": "8.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Closes_resolved_tickets",
+      "target": "linux-arm64",
+      "dist": "8.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Closes_resolved_tickets",
+      "target": "windows-x64",
+      "dist": "8.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Support.TicketRouterTests.Closes_resolved_tickets",
+      "target": "macos-arm64",
+      "dist": "8.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Loads_translation_bundle",
+      "target": "linux-x64",
+      "dist": "26.29 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Loads_translation_bundle",
+      "target": "linux-arm64",
+      "dist": "26.29 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Loads_translation_bundle",
+      "target": "windows-x64",
+      "dist": "26.29 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Loads_translation_bundle",
+      "target": "macos-arm64",
+      "dist": "26.29 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Finds_missing_translations",
+      "target": "linux-x64",
+      "dist": "3.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Finds_missing_translations",
+      "target": "linux-arm64",
+      "dist": "3.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Finds_missing_translations",
+      "target": "windows-x64",
+      "dist": "3.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Finds_missing_translations",
+      "target": "macos-arm64",
+      "dist": "3.3 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Lists_supported_languages",
+      "target": "linux-x64",
+      "dist": "4.41 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Lists_supported_languages",
+      "target": "linux-arm64",
+      "dist": "4.41 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Lists_supported_languages",
+      "target": "windows-x64",
+      "dist": "6.17 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Lists_supported_languages",
+      "target": "macos-arm64",
+      "dist": "3.53 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Resolves_fallback_language",
+      "target": "linux-x64",
+      "dist": "17.82 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Resolves_fallback_language",
+      "target": "linux-arm64",
+      "dist": "17.82 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Resolves_fallback_language",
+      "target": "windows-x64",
+      "dist": "17.82 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Resolves_fallback_language",
+      "target": "macos-arm64",
+      "dist": "17.82 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Counts_translated_keys",
+      "target": "linux-x64",
+      "dist": "14.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Counts_translated_keys",
+      "target": "linux-arm64",
+      "dist": "14.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Counts_translated_keys",
+      "target": "windows-x64",
+      "dist": "14.18 ms"
+    },
+    {
+      "scenario": "CTL-QUIET",
+      "test": "Storefront.UnitTests.Translations.TranslationCatalogTests.Counts_translated_keys",
+      "target": "macos-arm64",
+      "dist": "14.18 ms"
+    },
+    {
+      "scenario": "REG-WINDOWS-ONLY",
+      "test": "Storefront.IntegrationTests.Storage.AttachmentStoreTests.Saves_attachment",
+      "target": "linux-x64",
+      "dist": "30 ms"
+    },
+    {
+      "scenario": "REG-WINDOWS-ONLY",
+      "test": "Storefront.IntegrationTests.Storage.AttachmentStoreTests.Saves_attachment",
+      "target": "linux-arm64",
+      "dist": "30 ms"
+    },
+    {
+      "scenario": "REG-WINDOWS-ONLY",
+      "test": "Storefront.IntegrationTests.Storage.AttachmentStoreTests.Saves_attachment",
+      "target": "macos-arm64",
+      "dist": "30 ms"
+    },
+    {
+      "scenario": "REG-WINDOWS-HARD",
+      "test": "Storefront.UnitTests.Reporting.CsvExporterTests.Writes_csv_export",
+      "target": "linux-x64",
+      "dist": "80 ms"
+    },
+    {
+      "scenario": "REG-WINDOWS-HARD",
+      "test": "Storefront.UnitTests.Reporting.CsvExporterTests.Writes_csv_export",
+      "target": "linux-arm64",
+      "dist": "80 ms"
+    },
+    {
+      "scenario": "REG-WINDOWS-HARD",
+      "test": "Storefront.UnitTests.Reporting.CsvExporterTests.Writes_csv_export",
+      "target": "macos-arm64",
+      "dist": "80 ms"
+    },
+    {
+      "scenario": "REG-MACOS-ONLY",
+      "test": "Storefront.UnitTests.Media.ThumbnailGeneratorTests.Generates_thumbnail",
+      "target": "linux-x64",
+      "dist": "50 ms"
+    },
+    {
+      "scenario": "REG-MACOS-ONLY",
+      "test": "Storefront.UnitTests.Media.ThumbnailGeneratorTests.Generates_thumbnail",
+      "target": "linux-arm64",
+      "dist": "50 ms"
+    },
+    {
+      "scenario": "REG-MACOS-ONLY",
+      "test": "Storefront.UnitTests.Media.ThumbnailGeneratorTests.Generates_thumbnail",
+      "target": "windows-x64",
+      "dist": "50 ms"
+    },
+    {
+      "scenario": "REG-ARM64-ONLY",
+      "test": "Storefront.UnitTests.Security.PayloadChecksumTests.Computes_payload_checksum",
+      "target": "linux-x64",
+      "dist": "30 ms"
+    },
+    {
+      "scenario": "REG-ARM64-ONLY",
+      "test": "Storefront.UnitTests.Security.PayloadChecksumTests.Computes_payload_checksum",
+      "target": "windows-x64",
+      "dist": "30 ms"
+    },
+    {
+      "scenario": "REG-POSIX-ONLY",
+      "test": "Storefront.IntegrationTests.Storage.ExportPermissionsTests.Applies_export_permissions",
+      "target": "windows-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-OS-TRADEOFF",
+      "test": "Storefront.UnitTests.Storage.PathResolverTests.Resolves_relative_paths",
+      "target": "macos-arm64",
+      "dist": "60 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"en-US\")",
+      "target": "linux-x64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"en-US\")",
+      "target": "linux-arm64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"en-US\")",
+      "target": "windows-x64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"en-US\")",
+      "target": "macos-arm64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"de-DE\")",
+      "target": "linux-x64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"de-DE\")",
+      "target": "linux-arm64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"de-DE\")",
+      "target": "windows-x64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"de-DE\")",
+      "target": "macos-arm64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"ja-JP\")",
+      "target": "linux-x64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"ja-JP\")",
+      "target": "linux-arm64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"ja-JP\")",
+      "target": "windows-x64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-CASE",
+      "test": "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"ja-JP\")",
+      "target": "macos-arm64",
+      "dist": "20 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"USD\")",
+      "target": "linux-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"USD\")",
+      "target": "linux-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"USD\")",
+      "target": "windows-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"USD\")",
+      "target": "macos-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"EUR\")",
+      "target": "linux-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"EUR\")",
+      "target": "linux-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"EUR\")",
+      "target": "windows-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"EUR\")",
+      "target": "macos-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"JPY\")",
+      "target": "linux-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"JPY\")",
+      "target": "linux-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"JPY\")",
+      "target": "windows-x64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "REG-PARAM-HARD",
+      "test": "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"JPY\")",
+      "target": "macos-arm64",
+      "dist": "40 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock",
+      "target": "linux-x64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock",
+      "target": "linux-arm64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock",
+      "target": "windows-x64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock",
+      "target": "macos-arm64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock_across_warehouses",
+      "target": "linux-x64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock_across_warehouses",
+      "target": "linux-arm64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock_across_warehouses",
+      "target": "windows-x64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-RENAMED",
+      "test": "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock_across_warehouses",
+      "target": "macos-arm64",
+      "dist": "120 ms"
+    },
+    {
+      "scenario": "LIFE-REMOVED",
+      "test": "Storefront.UnitTests.Exports.LegacyXmlExporterTests.Exports_orders_as_xml",
+      "target": "linux-x64",
+      "dist": "90 ms"
+    },
+    {
+      "scenario": "LIFE-REMOVED",
+      "test": "Storefront.UnitTests.Exports.LegacyXmlExporterTests.Exports_orders_as_xml",
+      "target": "linux-arm64",
+      "dist": "90 ms"
+    },
+    {
+      "scenario": "LIFE-REMOVED",
+      "test": "Storefront.UnitTests.Exports.LegacyXmlExporterTests.Exports_orders_as_xml",
+      "target": "windows-x64",
+      "dist": "90 ms"
+    },
+    {
+      "scenario": "LIFE-REMOVED",
+      "test": "Storefront.UnitTests.Exports.LegacyXmlExporterTests.Exports_orders_as_xml",
+      "target": "macos-arm64",
+      "dist": "90 ms"
+    }
+  ]
+}

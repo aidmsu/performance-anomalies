@@ -1,0 +1,1049 @@
+[
+  {
+    "id": "CTL-STABLE",
+    "category": "control",
+    "summary": "Three stable tests (15, 40 and 250 ms) whose cost never changes on any target.",
+    "tests": [
+      "Storefront.UnitTests.Formatting.CurrencyFormatterTests.Formats_amounts_with_currency_symbols",
+      "Storefront.UnitTests.Catalog.SkuBatchParserTests.Parses_sku_batch",
+      "Storefront.UnitTests.Tax.TaxTableTests.Loads_tax_table"
+    ],
+    "changes": []
+  },
+  {
+    "id": "CTL-NOISY",
+    "category": "control",
+    "summary": "Noisy but unchanged test: carrier rate lookups take U(55..105) ms on every run of every commit.",
+    "tests": [
+      "Storefront.UnitTests.Shipping.ShippingQuoteTests.Returns_quote_for_domestic_parcel"
+    ],
+    "changes": []
+  },
+  {
+    "id": "CTL-HEAVY-TAIL",
+    "category": "control",
+    "summary": "Unchanged test with a heavy tail present from the start: 60 ms, but 5% of runs take 300 ms (cold model load). Outliers are seeded per run; their positions are in expected-durations.csv.",
+    "tests": [
+      "Storefront.UnitTests.Recommendations.RecommendationEngineTests.Returns_top_recommendations"
+    ],
+    "changes": []
+  },
+  {
+    "id": "CTL-MICRO",
+    "category": "control",
+    "summary": "Ten sub-millisecond tests of pure domain logic (Money, Sku). Their durations are dominated by timer resolution and JIT; relative changes are meaningless.",
+    "tests": [
+      "Storefront.UnitTests.Domain.MoneyTests.Adds_amounts_in_the_same_currency",
+      "Storefront.UnitTests.Domain.MoneyTests.Rejects_mixed_currencies",
+      "Storefront.UnitTests.Domain.MoneyTests.Rounds_half_to_even_when_multiplying",
+      "Storefront.UnitTests.Domain.MoneyTests.Formats_with_invariant_culture",
+      "Storefront.UnitTests.Domain.MoneyTests.Zero_is_the_identity_for_addition",
+      "Storefront.UnitTests.Domain.SkuTests.Parses_valid_sku",
+      "Storefront.UnitTests.Domain.SkuTests.Normalizes_category_to_upper_case",
+      "Storefront.UnitTests.Domain.SkuTests.Round_trips_to_string",
+      "Storefront.UnitTests.Domain.SkuTests.Rejects_sku_without_variant",
+      "Storefront.UnitTests.Domain.SkuTests.Rejects_empty_input"
+    ],
+    "changes": []
+  },
+  {
+    "id": "CTL-CPU-BOUND",
+    "category": "control",
+    "summary": "Real CPU-bound work (SHA-256 over 32 MB) that never changes. Its absolute duration depends on the runner CPU, so only stability matters.",
+    "tests": [
+      "Storefront.UnitTests.Security.CatalogHasherTests.Hashes_catalog_export"
+    ],
+    "changes": []
+  },
+  {
+    "id": "CTL-QUIET",
+    "category": "control",
+    "summary": "60 small unchanged tests with log-normal baselines (0.2-200 ms). Twelve of them have constant per-OS cost factors (Windows x1.4, macOS x0.8). Every alert on them is a false positive.",
+    "notes": "Platform-dependent tests (constant factors): `CustomerDirectoryTests.Counts_active_customers`, `AddressBookTests.Formats_address_label`, `ReviewModerationTests.Flags_abusive_review`, `MediaLibraryTests.Tags_media_asset`, `SupplierDirectoryTests.Loads_payment_terms`, `PageCatalogTests.Resolves_page_slug`, `PreferenceCenterTests.Lists_subscription_topics`, `AccountSettingsTests.Lists_active_sessions`, `EventTrackerTests.Aggregates_daily_events`, `NewsletterServiceTests.Renders_newsletter_preview`, `TicketRouterTests.Lists_open_tickets`, `TranslationCatalogTests.Lists_supported_languages`",
+    "tests": [
+      "Storefront.UnitTests.Customers.CustomerDirectoryTests.Finds_customer_by_email",
+      "Storefront.UnitTests.Customers.CustomerDirectoryTests.Lists_customers_by_segment",
+      "Storefront.UnitTests.Customers.CustomerDirectoryTests.Counts_active_customers",
+      "Storefront.UnitTests.Customers.CustomerDirectoryTests.Resolves_customer_alias",
+      "Storefront.UnitTests.Customers.CustomerDirectoryTests.Loads_customer_preferences",
+      "Storefront.UnitTests.Addresses.AddressBookTests.Validates_postal_code",
+      "Storefront.UnitTests.Addresses.AddressBookTests.Lists_saved_addresses",
+      "Storefront.UnitTests.Addresses.AddressBookTests.Formats_address_label",
+      "Storefront.UnitTests.Addresses.AddressBookTests.Geocodes_address",
+      "Storefront.UnitTests.Addresses.AddressBookTests.Merges_duplicate_addresses",
+      "Storefront.UnitTests.Reviews.ReviewModerationTests.Queues_review_for_moderation",
+      "Storefront.UnitTests.Reviews.ReviewModerationTests.Approves_review",
+      "Storefront.UnitTests.Reviews.ReviewModerationTests.Flags_abusive_review",
+      "Storefront.UnitTests.Reviews.ReviewModerationTests.Summarizes_review_ratings",
+      "Storefront.UnitTests.Reviews.ReviewModerationTests.Lists_pending_reviews",
+      "Storefront.UnitTests.Media.MediaLibraryTests.Registers_media_asset",
+      "Storefront.UnitTests.Media.MediaLibraryTests.Lists_assets_for_product",
+      "Storefront.UnitTests.Media.MediaLibraryTests.Tags_media_asset",
+      "Storefront.UnitTests.Media.MediaLibraryTests.Archives_unused_assets",
+      "Storefront.UnitTests.Media.MediaLibraryTests.Resolves_asset_url",
+      "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Finds_supplier_by_code",
+      "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Lists_supplier_contacts",
+      "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Loads_payment_terms",
+      "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Checks_supplier_certification",
+      "Storefront.UnitTests.Suppliers.SupplierDirectoryTests.Ranks_suppliers_by_lead_time",
+      "Storefront.UnitTests.Content.PageCatalogTests.Loads_landing_page",
+      "Storefront.UnitTests.Content.PageCatalogTests.Lists_navigation_menu",
+      "Storefront.UnitTests.Content.PageCatalogTests.Resolves_page_slug",
+      "Storefront.UnitTests.Content.PageCatalogTests.Renders_page_breadcrumbs",
+      "Storefront.UnitTests.Content.PageCatalogTests.Lists_published_banners",
+      "Storefront.UnitTests.Preferences.PreferenceCenterTests.Loads_notification_preferences",
+      "Storefront.UnitTests.Preferences.PreferenceCenterTests.Opts_out_of_newsletter",
+      "Storefront.UnitTests.Preferences.PreferenceCenterTests.Lists_subscription_topics",
+      "Storefront.UnitTests.Preferences.PreferenceCenterTests.Applies_quiet_hours",
+      "Storefront.UnitTests.Preferences.PreferenceCenterTests.Exports_preference_history",
+      "Storefront.UnitTests.Accounts.AccountSettingsTests.Changes_display_name",
+      "Storefront.UnitTests.Accounts.AccountSettingsTests.Enables_two_factor_login",
+      "Storefront.UnitTests.Accounts.AccountSettingsTests.Lists_active_sessions",
+      "Storefront.UnitTests.Accounts.AccountSettingsTests.Rotates_api_key",
+      "Storefront.UnitTests.Accounts.AccountSettingsTests.Loads_privacy_settings",
+      "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_page_view",
+      "Storefront.UnitTests.Analytics.EventTrackerTests.Tracks_add_to_cart",
+      "Storefront.UnitTests.Analytics.EventTrackerTests.Aggregates_daily_events",
+      "Storefront.UnitTests.Analytics.EventTrackerTests.Lists_top_search_terms",
+      "Storefront.UnitTests.Analytics.EventTrackerTests.Purges_expired_events",
+      "Storefront.UnitTests.Marketing.NewsletterServiceTests.Builds_newsletter_audience",
+      "Storefront.UnitTests.Marketing.NewsletterServiceTests.Schedules_newsletter",
+      "Storefront.UnitTests.Marketing.NewsletterServiceTests.Renders_newsletter_preview",
+      "Storefront.UnitTests.Marketing.NewsletterServiceTests.Lists_newsletter_campaigns",
+      "Storefront.UnitTests.Marketing.NewsletterServiceTests.Counts_newsletter_bounces",
+      "Storefront.UnitTests.Support.TicketRouterTests.Routes_ticket_by_topic",
+      "Storefront.UnitTests.Support.TicketRouterTests.Escalates_overdue_ticket",
+      "Storefront.UnitTests.Support.TicketRouterTests.Lists_open_tickets",
+      "Storefront.UnitTests.Support.TicketRouterTests.Assigns_ticket_owner",
+      "Storefront.UnitTests.Support.TicketRouterTests.Closes_resolved_tickets",
+      "Storefront.UnitTests.Translations.TranslationCatalogTests.Loads_translation_bundle",
+      "Storefront.UnitTests.Translations.TranslationCatalogTests.Finds_missing_translations",
+      "Storefront.UnitTests.Translations.TranslationCatalogTests.Lists_supported_languages",
+      "Storefront.UnitTests.Translations.TranslationCatalogTests.Resolves_fallback_language",
+      "Storefront.UnitTests.Translations.TranslationCatalogTests.Counts_translated_keys"
+    ],
+    "changes": []
+  },
+  {
+    "id": "REG-STEP-LARGE",
+    "category": "regression",
+    "summary": "Sudden large step on every target: 3 ms → 500 ms at commit 60 (invoice rendering starts embedding four font files). A no-op refactoring of the same class at commit 57 is a decoy for culprit detection.",
+    "tests": [
+      "Storefront.UnitTests.Billing.InvoiceRendererTests.Renders_invoice_pdf"
+    ],
+    "changes": [
+      {
+        "commit": 57,
+        "sha": "e710098bd6576cff545192bd0004d8126afb5c6b",
+        "kind": "decoy",
+        "tier": "must_not",
+        "subject": "Extract invoice line formatting into a helper"
+      },
+      {
+        "commit": 60,
+        "sha": "b8acae83278d7ca6ec4c0bf1a9db241c591f50ff",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Embed brand fonts into invoice PDFs"
+      }
+    ]
+  },
+  {
+    "id": "REG-STEP-MODERATE",
+    "category": "regression",
+    "summary": "Moderate step on every target: 100 → 140 ms (+40%) at commit 36 (cart totals start estimating shipping per line).",
+    "tests": [
+      "Storefront.UnitTests.Cart.CartTotalsCalculatorTests.Calculates_totals_for_large_cart"
+    ],
+    "changes": [
+      {
+        "commit": 36,
+        "sha": "d34a04faaea4361cf932d11af63eb88f8e375ee3",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Estimate shipping for every cart line"
+      }
+    ]
+  },
+  {
+    "id": "REG-STEP-SMALL",
+    "category": "regression",
+    "summary": "Small step on every target: 200 → 222 ms (+11%) at commit 64 (order numbers are checked against the archive).",
+    "tests": [
+      "Storefront.UnitTests.Orders.OrderNumberGeneratorTests.Generates_order_number_batch"
+    ],
+    "changes": [
+      {
+        "commit": 64,
+        "sha": "aada3725c1c2db5f09cf771a2e45e48931041ca9",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Check new order numbers against the archive"
+      }
+    ]
+  },
+  {
+    "id": "REG-SENS-3PCT",
+    "category": "regression",
+    "summary": "Tiny step on every target: 100 → 103 ms (+3%) at commit 14 (tier evaluation writes an audit record). At the noise floor; optional to detect.",
+    "tests": [
+      "Storefront.UnitTests.Loyalty.LoyaltyTierEvaluatorTests.Computes_tier_for_customer"
+    ],
+    "changes": [
+      {
+        "commit": 14,
+        "sha": "f90fcdc6e68e486e64c1e70008d66d45c4542c77",
+        "kind": "step",
+        "tier": "optional",
+        "subject": "Audit loyalty tier evaluations"
+      }
+    ]
+  },
+  {
+    "id": "REG-SENS-6PCT",
+    "category": "regression",
+    "summary": "Small step on every target: 100 → 106 ms (+6%) at commit 26 (wishlist merge deduplicates by variant).",
+    "tests": [
+      "Storefront.UnitTests.Wishlists.WishlistMergerTests.Merges_guest_and_account_wishlists"
+    ],
+    "changes": [
+      {
+        "commit": 26,
+        "sha": "658dab79287908c8266821a84085bc0193dd9148",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Deduplicate merged wishlist items by variant"
+      }
+    ]
+  },
+  {
+    "id": "REG-STEP-IN-NOISE",
+    "category": "regression",
+    "summary": "Shift inside heavy noise on every target: U(90..150) → U(120..180) ms at commit 58 (fraud scoring queries a device reputation service). Detectable only statistically.",
+    "tests": [
+      "Storefront.UnitTests.Fraud.FraudScorerTests.Scores_order"
+    ],
+    "changes": [
+      {
+        "commit": 58,
+        "sha": "3fd3f7da987c6961e6d1dbbdbb7ecdfcc9d2327f",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Query device reputation during fraud scoring"
+      }
+    ]
+  },
+  {
+    "id": "REG-STAIRCASE",
+    "category": "regression",
+    "summary": "Staircase on every target: 60 → 85 → 110 → 135 → 160 ms at commits 24, 48, 70 and 96 (each commit adds a search analyzer stage).",
+    "tests": [
+      "Storefront.UnitTests.Search.SearchIndexBuilderTests.Builds_index_for_catalog"
+    ],
+    "changes": [
+      {
+        "commit": 24,
+        "sha": "1f1d56b06c26afc68b40d1346fb8d719472652ea",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Expand synonyms when building the search index"
+      },
+      {
+        "commit": 48,
+        "sha": "3bdb06670a1248432e85cfb90156b4ef3a040f81",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Index product attributes for faceted search"
+      },
+      {
+        "commit": 70,
+        "sha": "95d7fe480d525a60656acb8dd880500b5019cbfb",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Add phonetic matching for brand names"
+      },
+      {
+        "commit": 96,
+        "sha": "9a8180df8bf66869b1d3459bdbb07d85b69e2ca0",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Store edge n-grams for search autocomplete"
+      }
+    ]
+  },
+  {
+    "id": "REG-EARLY",
+    "category": "regression",
+    "summary": "Regression with a short baseline: 70 → 200 ms at commit 8 on every target (catalog feed rows are upserted one by one). Only 7 points before the change.",
+    "tests": [
+      "Storefront.IntegrationTests.Catalog.CatalogFeedImporterTests.Imports_catalog_feed"
+    ],
+    "changes": [
+      {
+        "commit": 8,
+        "sha": "f9a0d83546ab4345b879f71a1708883a9be1c315",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Upsert catalog feed rows one at a time"
+      }
+    ]
+  },
+  {
+    "id": "REG-LATE",
+    "category": "regression",
+    "summary": "Recent regression: 25 → 150 ms at commit 116 on every target (order confirmation e-mails use a new template engine). Only 5 points after the change.",
+    "tests": [
+      "Storefront.IntegrationTests.Notifications.NotificationDispatcherTests.Sends_order_confirmation"
+    ],
+    "changes": [
+      {
+        "commit": 116,
+        "sha": "c4cbb292de19eb59e80c36812213095b52effe78",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Render order confirmations with the new template engine"
+      }
+    ]
+  },
+  {
+    "id": "REG-ABSOLUTE-LARGE",
+    "category": "regression",
+    "summary": "Large absolute but small relative change on every target: 1000 → 1080 ms (+8%, +80 ms) at commit 102 (ledger reconciliation also matches card settlements). Pairs with REG-RELATIVE-LARGE.",
+    "tests": [
+      "Storefront.IntegrationTests.Accounting.LedgerReconcilerTests.Reconciles_monthly_ledger"
+    ],
+    "changes": [
+      {
+        "commit": 102,
+        "sha": "d0a36986d8825bd97228fa0c7d195b85aea2a82d",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Match card settlements during ledger reconciliation"
+      }
+    ]
+  },
+  {
+    "id": "REG-RELATIVE-LARGE",
+    "category": "regression",
+    "summary": "Large relative but tiny absolute change on every target: 0.3 → 0.9 ms (+200%, +0.6 ms) at commit 104 (SKU normalization applies Unicode compatibility decomposition). Optional to report; pairs with REG-ABSOLUTE-LARGE.",
+    "tests": [
+      "Storefront.UnitTests.Catalog.SkuNormalizerTests.Normalizes_sku_input"
+    ],
+    "changes": [
+      {
+        "commit": 104,
+        "sha": "69628e4485f715caa8442a9cce0d6b33a7eff7e6",
+        "kind": "step",
+        "tier": "optional",
+        "subject": "Apply compatibility decomposition to SKU input"
+      }
+    ]
+  },
+  {
+    "id": "REG-CPU-BOUND",
+    "category": "regression",
+    "summary": "Real CPU-bound regression at commit 88 on every target: feed compression runs four Deflate passes instead of two, so duration roughly doubles (expected ratio 2.0 ± 0.25; the 3 MB input is built in a class fixture outside the measured time). Absolute values depend on the runner CPU.",
+    "tests": [
+      "Storefront.UnitTests.Feeds.FeedCompressorTests.Compresses_product_feed"
+    ],
+    "changes": [
+      {
+        "commit": 88,
+        "sha": "a14209dd24b4d2c0c27a9e7b3a21abe080c897c4",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Publish compressed feeds for each CDN region"
+      }
+    ]
+  },
+  {
+    "id": "REG-CONFIG",
+    "category": "regression",
+    "summary": "Regression caused by a configuration change only (no code): at commit 98 the embedded appsettings.json raises MaxRetries from 2 to 6, so exhausting retries takes 55 → 155 ms on every target.",
+    "tests": [
+      "Storefront.IntegrationTests.Resilience.RetryPolicyTests.Falls_back_after_exhausting_retries"
+    ],
+    "changes": [
+      {
+        "commit": 98,
+        "sha": "53dd39aa5156b2f4fb42364e42dbc061524a7817",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Raise the default retry budget for partner calls"
+      }
+    ]
+  },
+  {
+    "id": "REG-FANOUT",
+    "category": "regression",
+    "summary": "Fan-out from one cause at commit 68 on every target: the shared order payload serializer validates against a JSON schema, adding 60 ms to six tests in two projects (baselines 10, 25, 40, 80, 150 and 300 ms; +600% down to +20%). All six events share one cause_group.",
+    "tests": [
+      "Storefront.UnitTests.Orders.OrderApiTests.Returns_order_summary",
+      "Storefront.UnitTests.Orders.OrderApiTests.Returns_order_details",
+      "Storefront.UnitTests.Orders.OrderApiTests.Returns_order_history",
+      "Storefront.UnitTests.Orders.OrderApiTests.Returns_order_export",
+      "Storefront.IntegrationTests.Orders.OrderApiContractTests.Matches_order_contract",
+      "Storefront.IntegrationTests.Orders.OrderApiContractTests.Matches_bulk_order_contract"
+    ],
+    "changes": [
+      {
+        "commit": 68,
+        "sha": "13c9e2c7f3c42839b4483a2b322d66745da78fd3",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Validate order API payloads against the published JSON schema"
+      }
+    ]
+  },
+  {
+    "id": "REG-SQUASH-GIFTCARD",
+    "category": "regression",
+    "summary": "First of two unrelated regressions squashed into commit 22: gift card redemption 30 → 75 ms on every target (velocity check). Same SHA as REG-SQUASH-RETURNS but a different cause.",
+    "tests": [
+      "Storefront.UnitTests.GiftCards.GiftCardServiceTests.Redeems_gift_card"
+    ],
+    "changes": [
+      {
+        "commit": 22,
+        "sha": "4c428e1b75eecde242ed66f4ae543cdbcb36f23f",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Harden gift card redemption and return pickups"
+      }
+    ]
+  },
+  {
+    "id": "REG-SQUASH-RETURNS",
+    "category": "regression",
+    "summary": "Second of two unrelated regressions squashed into commit 22: return policy evaluation 90 → 140 ms on every target (carrier pickup lookup).",
+    "tests": [
+      "Storefront.UnitTests.Returns.ReturnsPolicyTests.Evaluates_return_request"
+    ],
+    "changes": [
+      {
+        "commit": 22,
+        "sha": "4c428e1b75eecde242ed66f4ae543cdbcb36f23f",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Harden gift card redemption and return pickups"
+      }
+    ]
+  },
+  {
+    "id": "REG-WINDOWS-ONLY",
+    "category": "regression",
+    "summary": "Windows-only regression: 30 → 330 ms at commit 52 on windows-x64 (attachment writes wait for the file handle to be released three times). Linux and macOS are unchanged.",
+    "tests": [
+      "Storefront.IntegrationTests.Storage.AttachmentStoreTests.Saves_attachment"
+    ],
+    "changes": [
+      {
+        "commit": 52,
+        "sha": "940934115ef8d536fc984409099ef79916de42b6",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Retry attachment writes on Windows sharing violations"
+      }
+    ]
+  },
+  {
+    "id": "REG-WINDOWS-HARD",
+    "category": "regression",
+    "summary": "Small Windows-only regression: 80 → 100 ms (+25%) at commit 74 on windows-x64 (CSV export normalizes line endings for Excel). Other targets unchanged.",
+    "tests": [
+      "Storefront.UnitTests.Reporting.CsvExporterTests.Writes_csv_export"
+    ],
+    "changes": [
+      {
+        "commit": 74,
+        "sha": "a919a77e751ddda8d02a729294aa579a55ca8e4e",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Normalize CSV line endings for Excel on Windows"
+      }
+    ]
+  },
+  {
+    "id": "REG-MACOS-ONLY",
+    "category": "regression",
+    "summary": "macOS-only regression: 50 → 120 ms at commit 72 on macos-arm64 (thumbnails are converted to Display P3). linux-arm64 is unchanged, so this is not an architecture effect.",
+    "tests": [
+      "Storefront.UnitTests.Media.ThumbnailGeneratorTests.Generates_thumbnail"
+    ],
+    "changes": [
+      {
+        "commit": 72,
+        "sha": "d3b0ed358a51f5915a8fcab3d0fb7ab90848ae35",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Convert thumbnails to Display P3 on macOS"
+      }
+    ]
+  },
+  {
+    "id": "REG-ARM64-ONLY",
+    "category": "regression",
+    "summary": "Architecture-specific regression: 30 → 90 ms at commit 20 on linux-arm64 and macos-arm64 only (the new checksum has a vectorized path for x64 only). x64 targets are unchanged.",
+    "tests": [
+      "Storefront.UnitTests.Security.PayloadChecksumTests.Computes_payload_checksum"
+    ],
+    "changes": [
+      {
+        "commit": 20,
+        "sha": "ec5ece337981d187b82958afa6e396424d7d24fa",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Switch payload checksums to CRC-64"
+      }
+    ]
+  },
+  {
+    "id": "REG-POSIX-ONLY",
+    "category": "regression",
+    "summary": "Regression on three of four targets: 40 → 100 ms at commit 30 on linux-x64, linux-arm64 and macos-arm64 (POSIX permissions are applied per directory). windows-x64 is unchanged.",
+    "tests": [
+      "Storefront.IntegrationTests.Storage.ExportPermissionsTests.Applies_export_permissions"
+    ],
+    "changes": [
+      {
+        "commit": 30,
+        "sha": "c402a143f3cd02790abe23a5d21f44a60d45a939",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Apply POSIX permissions to every export directory"
+      }
+    ]
+  },
+  {
+    "id": "REG-ALL-TARGETS-DIFFERENT",
+    "category": "regression",
+    "summary": "One change that regresses every target by a different amount at commit 56: Linux 60 → 75 ms (+25%), macOS 60 → 90 ms (+50%), Windows 60 → 180 ms (x3). It must be reported on all targets, not as Windows-only.",
+    "tests": [
+      "Storefront.UnitTests.Feeds.ProductFeedBuilderTests.Builds_product_feed"
+    ],
+    "changes": [
+      {
+        "commit": 56,
+        "sha": "baaffdc9c386bc9f0e994fa9d61672256636db4c",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Validate product feeds against the partner XSD"
+      }
+    ]
+  },
+  {
+    "id": "REG-OS-TRADEOFF",
+    "category": "regression",
+    "summary": "Trade-off in one commit (86): path canonicalization becomes faster on Linux (60 → 25 ms), slower on Windows (60 → 150 ms) and stays at 60 ms on macOS.",
+    "tests": [
+      "Storefront.UnitTests.Storage.PathResolverTests.Resolves_relative_paths"
+    ],
+    "changes": [
+      {
+        "commit": 86,
+        "sha": "b6c3b4807c06fe84335fcfcff5a0f3ff28c22879",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Use platform-native path canonicalization"
+      }
+    ]
+  },
+  {
+    "id": "REG-PARAM-SCALING",
+    "category": "regression",
+    "summary": "Parameter-dependent regression at commit 46 on every target: deduplication switches from a hash set to a nested loop, so cost goes from 2+0.005n ms to 2+0.005n+0.00001·n²/2 ms. itemCount=10 and 100 are unchanged (must_not), 1000 is +70%, 10000 is x10.6. A no-op refactoring of the same class at commit 43 is a decoy.",
+    "tests": [
+      "Storefront.UnitTests.Catalog.DeduplicatorTests.Removes_duplicates(itemCount: 10)",
+      "Storefront.UnitTests.Catalog.DeduplicatorTests.Removes_duplicates(itemCount: 100)",
+      "Storefront.UnitTests.Catalog.DeduplicatorTests.Removes_duplicates(itemCount: 1000)",
+      "Storefront.UnitTests.Catalog.DeduplicatorTests.Removes_duplicates(itemCount: 10000)"
+    ],
+    "changes": [
+      {
+        "commit": 43,
+        "sha": "5812b0b89f4d9247380047213e83c4b1499e7c08",
+        "kind": "decoy",
+        "tier": "must_not",
+        "subject": "Extract duplicate key selection in the deduplicator"
+      },
+      {
+        "commit": 46,
+        "sha": "d2ba8f1cdf694b30a7386fe7942bf6a4d68761ea",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Keep first occurrence order when removing duplicate items"
+      }
+    ]
+  },
+  {
+    "id": "REG-PARAM-CASE",
+    "category": "regression",
+    "summary": "Regression in one theory case at commit 100 on every target: only culture \"tr-TR\" goes 20 → 90 ms (Turkish dotted-I normalization). en-US, de-DE and ja-JP are unchanged (must_not).",
+    "tests": [
+      "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"en-US\")",
+      "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"de-DE\")",
+      "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"tr-TR\")",
+      "Storefront.UnitTests.Localization.OrderDateFormatterTests.Formats_order_date(culture: \"ja-JP\")"
+    ],
+    "changes": [
+      {
+        "commit": 100,
+        "sha": "ed303fc8701984656c4a940a34146362e4b46ff8",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Normalize Turkish dotted and dotless I in month names"
+      }
+    ]
+  },
+  {
+    "id": "REG-PARAM-HARD",
+    "category": "regression",
+    "summary": "Small regression in one theory case at commit 18 on every target: only currency \"KWD\" (three decimal places) goes 40 → 52 ms (+30%). USD, EUR and JPY are unchanged (must_not).",
+    "tests": [
+      "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"USD\")",
+      "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"EUR\")",
+      "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"JPY\")",
+      "Storefront.UnitTests.Pricing.CurrencyConverterTests.Converts_order_total(currency: \"KWD\")"
+    ],
+    "changes": [
+      {
+        "commit": 18,
+        "sha": "f700eca5835f2db662b28caaa200126ff8708989",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Round three-decimal currencies with the exchange's rules"
+      }
+    ]
+  },
+  {
+    "id": "REG-FIXED",
+    "category": "regression",
+    "summary": "Regression that is later fixed, on every target: 40 → 400 ms at commit 44 (search loads reviews per product, N+1) and back to 40 ms at commit 82 (reviews are aggregated in the search query).",
+    "tests": [
+      "Storefront.UnitTests.Search.ProductSearchServiceTests.Finds_products_by_keyword"
+    ],
+    "changes": [
+      {
+        "commit": 44,
+        "sha": "4464ed42995f77478784663e842499df98cb8586",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Rank search results by average review rating"
+      },
+      {
+        "commit": 82,
+        "sha": "6ef6c884484b5852a03acb94ce82ffa9700e5e94",
+        "kind": "step",
+        "tier": "must",
+        "link": "fixes",
+        "link_commit": 44,
+        "subject": "Aggregate review ratings inside the search query"
+      }
+    ]
+  },
+  {
+    "id": "REG-PARTIAL-FIX",
+    "category": "regression",
+    "summary": "Regression that is only partially fixed, on every target: 80 → 320 ms at commit 50 (per-line tax breakdown in the sales report) and 320 → 140 ms at commit 78 (breakdown cached per tax category). Still 75% above the original level.",
+    "tests": [
+      "Storefront.IntegrationTests.Reporting.SalesReportExporterTests.Exports_sales_report_csv"
+    ],
+    "changes": [
+      {
+        "commit": 50,
+        "sha": "7a0670ca3e806b8b6dce7ba349a60a6c1c11922d",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Include a tax breakdown for every sales report line"
+      },
+      {
+        "commit": 78,
+        "sha": "5ab17d441c6fa14bed0a37b71218b88bc14100d7",
+        "kind": "step",
+        "tier": "must",
+        "link": "partially_fixes",
+        "link_commit": 50,
+        "subject": "Cache tax breakdowns per tax category in sales reports"
+      }
+    ]
+  },
+  {
+    "id": "REG-REINTRODUCED",
+    "category": "regression",
+    "summary": "Regression that is fixed by a revert and comes back, on every target: 20 → 180 ms at commit 28 (coupon eligibility checks order history, N+1), reverted at commit 54 (back to 20 ms), reapplied at commit 92 (180 ms again).",
+    "tests": [
+      "Storefront.UnitTests.Promotions.CouponServiceTests.Applies_percentage_coupon"
+    ],
+    "changes": [
+      {
+        "commit": 28,
+        "sha": "b576978f8916a1082469691ed147bd995bf1af0f",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Check coupon eligibility against the order history"
+      },
+      {
+        "commit": 54,
+        "sha": "2ec73c7bf84695f5f654c38e1eef53c0e6463757",
+        "kind": "step",
+        "tier": "must",
+        "link": "reverts",
+        "link_commit": 28,
+        "revert_of": 28,
+        "subject": "Revert \"Check coupon eligibility against the order history\""
+      },
+      {
+        "commit": 92,
+        "sha": "f41bd3775866a9ca8af7a38ae50131a877ff9ef8",
+        "kind": "step",
+        "tier": "must",
+        "link": "reintroduces",
+        "link_commit": 28,
+        "revert_of": 54,
+        "subject": "Reapply \"Check coupon eligibility against the order history\""
+      }
+    ]
+  },
+  {
+    "id": "REG-HOTFIX-ONE-COMMIT",
+    "category": "regression",
+    "summary": "One-commit regression on every target: 35 → 350 ms at commit 106 only (card BIN lookup calls the issuer registry), hotfixed at commit 107. A single point, but it appears on all four targets at once, unlike random outliers.",
+    "tests": [
+      "Storefront.UnitTests.Payments.PaymentGatewayTests.Authorizes_card_payment"
+    ],
+    "changes": [
+      {
+        "commit": 106,
+        "sha": "669dee621a6c3d7fa2342b31fb54dc6811c26a06",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Verify card BIN against the issuer registry"
+      },
+      {
+        "commit": 107,
+        "sha": "036761fac2c5e9c52e71d49ab4236f7655def081",
+        "kind": "step",
+        "tier": "should",
+        "link": "fixes",
+        "link_commit": 106,
+        "subject": "Hotfix: read card BIN data from the local registry copy"
+      }
+    ]
+  },
+  {
+    "id": "REG-SHORT-LIVED",
+    "category": "regression",
+    "summary": "Short-lived regression on every target: 30 → 90 ms at commit 110 (gift message previews rendered as images), fixed at commit 113 (rendered lazily). Three points at the higher level.",
+    "tests": [
+      "Storefront.UnitTests.Orders.GiftWrapServiceTests.Wraps_order_with_message"
+    ],
+    "changes": [
+      {
+        "commit": 110,
+        "sha": "f6dcf4c25cc2882f2fe158343733a42107b86ab5",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Render gift message previews as images"
+      },
+      {
+        "commit": 113,
+        "sha": "ca139c5c146a903b9aeab7b6035c518c0c4d73a4",
+        "kind": "step",
+        "tier": "must",
+        "link": "fixes",
+        "link_commit": 110,
+        "subject": "Render gift message previews on first view"
+      }
+    ]
+  },
+  {
+    "id": "REG-BIMODAL",
+    "category": "regression",
+    "summary": "Modality change on every target at commit 62: a stable 100 ms becomes a 50/50 mixture of 100 ms and 200 ms (sessions are read from the distributed cache first and half of the reads miss). The mean rises by 50% and the sample median becomes unstable (it jumps between 100 and 200 ms depending on the draws); the distribution, not a level, is what changes.",
+    "tests": [
+      "Storefront.UnitTests.Sessions.SessionStoreTests.Restores_customer_session"
+    ],
+    "changes": [
+      {
+        "commit": 62,
+        "sha": "77c993c340f21c1b371cd4283f5958dcb1886faf",
+        "kind": "modality",
+        "tier": "must",
+        "direction": "regression",
+        "subject": "Restore sessions from the distributed cache first"
+      }
+    ]
+  },
+  {
+    "id": "REG-VARIANCE",
+    "category": "regression",
+    "summary": "Stability regression on every target at commit 34: a steady 150 ms becomes uniform 90..210 ms with the same mean (catalog pricing moves to a shared worker pool with variable contention).",
+    "tests": [
+      "Storefront.UnitTests.Pricing.PricingEngineTests.Prices_catalog"
+    ],
+    "changes": [
+      {
+        "commit": 34,
+        "sha": "9fbc7bb851b4e56e8056b24e47f362305dcd0e5d",
+        "kind": "variance",
+        "tier": "should",
+        "direction": "regression",
+        "subject": "Price catalog partitions on the shared worker pool"
+      }
+    ]
+  },
+  {
+    "id": "REG-TAIL-INTERMITTENT",
+    "category": "regression",
+    "summary": "Intermittent tail appears on every target at commit 32: 50 ms, but from now on 15% of runs take 400 ms (stale pooled connections are re-established). The median is unchanged; p90/p95 grow 8x. Contrast with CTL-HEAVY-TAIL, which always had a tail.",
+    "tests": [
+      "Storefront.UnitTests.Data.ConnectionPoolTests.Leases_connection"
+    ],
+    "changes": [
+      {
+        "commit": 32,
+        "sha": "7ec4b06cac85f5fd59438254703b15412a368bf8",
+        "kind": "tail",
+        "tier": "must",
+        "direction": "regression",
+        "subject": "Validate pooled connections before leasing them"
+      }
+    ]
+  },
+  {
+    "id": "OPT-STEP",
+    "category": "optimization",
+    "summary": "Sudden improvement on every target: 400 → 84 ms at commit 66 (catalog snapshots are rebuilt incrementally: 2 of 10 partitions are rebuilt, the rest is copied).",
+    "tests": [
+      "Storefront.UnitTests.Catalog.CatalogSnapshotBuilderTests.Builds_catalog_snapshot"
+    ],
+    "changes": [
+      {
+        "commit": 66,
+        "sha": "225cd566a25c864ed042c01572f3cf3246160ba8",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Rebuild only changed partitions of the catalog snapshot"
+      }
+    ]
+  },
+  {
+    "id": "OPT-REVERTED",
+    "category": "optimization",
+    "summary": "Optimization that is later reverted, on every target: 150 → 50 ms at commit 40 (rules are precompiled at publish time instead of on every evaluation), back to 150 ms at commit 94 (git revert because edited promotions were not recompiled). The revert is a regression against the preceding level.",
+    "tests": [
+      "Storefront.UnitTests.Promotions.PromotionEngineTests.Evaluates_promotions_for_cart"
+    ],
+    "changes": [
+      {
+        "commit": 40,
+        "sha": "4bd7c1341d528bdad76cb495194ae1de4adcc702",
+        "kind": "step",
+        "tier": "must",
+        "subject": "Use promotion rules precompiled at publish time"
+      },
+      {
+        "commit": 94,
+        "sha": "6935d9f69ea383fc754ed091834ea0cfa48f669e",
+        "kind": "step",
+        "tier": "must",
+        "link": "reverts",
+        "link_commit": 40,
+        "revert_of": 40,
+        "subject": "Revert \"Use promotion rules precompiled at publish time\""
+      }
+    ]
+  },
+  {
+    "id": "OPT-BIMODAL-FIXED",
+    "category": "optimization",
+    "summary": "Instability removed on every target at commit 80: a 50/50 mixture of 80 ms and 160 ms (inventory sync sometimes retries because it races the warehouse feed) becomes a stable 80 ms.",
+    "tests": [
+      "Storefront.UnitTests.Inventory.InventorySynchronizerTests.Syncs_stock_levels"
+    ],
+    "changes": [
+      {
+        "commit": 80,
+        "sha": "f9eeff68c854a32791f5b566a1ba665c19f7bcd1",
+        "kind": "modality",
+        "tier": "must",
+        "direction": "improvement",
+        "subject": "Wait for the warehouse feed before syncing stock levels"
+      }
+    ]
+  },
+  {
+    "id": "REG-GRADUAL-LINEAR",
+    "category": "drift",
+    "summary": "Linear creep on every target: every commit ≡ 1 (mod 4) between 17 and 105 adds a checkout validation rule costing 4 ms, so the test drifts 30 → 122 ms over 23 small steps with no single culprit.",
+    "notes": "Rule commits: 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85, 89, 93, 97, 101, 105.",
+    "tests": [
+      "Storefront.UnitTests.Checkout.CheckoutValidatorTests.Validates_complete_checkout"
+    ],
+    "ramp": {
+      "start": 17,
+      "end": 105
+    },
+    "changes": []
+  },
+  {
+    "id": "REG-GRADUAL-ACCEL",
+    "category": "drift",
+    "summary": "Accelerating creep driven only by data: every commit ≡ 3 (mod 4) between 3 and 119 adds six rows to the embedded tax jurisdiction table, whose loader checks every pair of rows for overlaps. Cost 2 + 0.0045·n(n-1)/2 ms grows from about 4 ms (30 rows) to about 101 ms (210 rows), faster towards the end.",
+    "notes": "Data-growth commits: 3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71, 75, 79, 83, 87, 91, 95, 99, 103, 107, 111, 115, 119. Rows: 30 at commit 1, 210 at the end.",
+    "tests": [
+      "Storefront.UnitTests.Tax.TaxJurisdictionRegistryTests.Loads_jurisdiction_registry"
+    ],
+    "ramp": {
+      "start": 3,
+      "end": 119
+    },
+    "changes": []
+  },
+  {
+    "id": "REG-DRIFT-SUBNOISE",
+    "category": "drift",
+    "summary": "Slow creep below the per-commit noise on every target: every commit ≡ 3 (mod 4) between 31 and 79 adds a shipping label field costing 3 ms, so the test drifts 200 → 239 ms in 13 steps (each step about half the run-to-run noise).",
+    "tests": [
+      "Storefront.UnitTests.Shipping.ShippingLabelPrinterTests.Prints_shipping_label"
+    ],
+    "ramp": {
+      "start": 31,
+      "end": 79
+    },
+    "changes": []
+  },
+  {
+    "id": "OPT-GRADUAL",
+    "category": "drift",
+    "summary": "Gradual improvement on every target: every commit ≡ 1 (mod 4) between 33 and 89 stops pre-warming one legacy image rendition (8 ms each), so the test improves 200 → 80 ms in 15 steps.",
+    "tests": [
+      "Storefront.UnitTests.Media.ImageCacheWarmerTests.Warms_image_cache"
+    ],
+    "ramp": {
+      "start": 33,
+      "end": 89
+    },
+    "changes": []
+  },
+  {
+    "id": "LIFE-GAP-WITH-CHANGE",
+    "category": "lifecycle",
+    "summary": "Regression hidden in a gap: the test is skipped at commit 10 (TRX outcome NotExecuted). Commit 12 makes the code 50 → 110 ms on every target while nobody measures it. The test is re-enabled at commit 16. The culprit is commit 12, not 16; any window [12, 18] is acceptable.",
+    "tests": [
+      "Storefront.UnitTests.Loyalty.LoyaltyPointsCalculatorTests.Accrues_points_for_order"
+    ],
+    "changes": [
+      {
+        "commit": 10,
+        "sha": "d4864aede01c2586955d43507f697ec3ead62f89",
+        "kind": "test_skipped",
+        "tier": "must_not",
+        "direction": "neutral",
+        "subject": "Skip the loyalty points test until the ledger fixture is fixed"
+      },
+      {
+        "commit": 12,
+        "sha": "4dc16c5aec681d3e4ca1b86ecf5fd3b73d7384a9",
+        "kind": "hidden_step",
+        "tier": "must",
+        "subject": "Recalculate the tier bonus on every points accrual"
+      },
+      {
+        "commit": 16,
+        "sha": "1068c33ab5de20369ae214bd66afe19562bb5520",
+        "kind": "test_unskipped",
+        "tier": "must_not",
+        "direction": "neutral",
+        "subject": "Re-enable the loyalty points test"
+      }
+    ]
+  },
+  {
+    "id": "LIFE-NEW-SLOW-TEST",
+    "category": "lifecycle",
+    "summary": "A new, already slow test appears at commit 84 (900 ms; the suite total grows, but no test regressed). After a 6-point baseline it regresses 900 → 1140 ms at commit 90 on every target.",
+    "tests": [
+      "Storefront.IntegrationTests.Imports.SupplierBulkImporterTests.Imports_large_batch"
+    ],
+    "changes": [
+      {
+        "commit": 84,
+        "sha": "cfb677ce17db005af2e96f7613c6b32824e5ddb7",
+        "kind": "test_added",
+        "tier": "must_not",
+        "direction": "neutral",
+        "subject": "Add bulk import for supplier catalogs"
+      },
+      {
+        "commit": 90,
+        "sha": "d643f84b8f4973b5c15c8a959118647efca8d8f6",
+        "kind": "step",
+        "tier": "should",
+        "subject": "Validate supplier SKUs during bulk import"
+      }
+    ]
+  },
+  {
+    "id": "LIFE-RENAMED",
+    "category": "lifecycle",
+    "summary": "Test rename at commit 108: WarehouseAllocatorTests.Allocates_stock becomes Allocates_stock_across_warehouses with the same 120 ms. The history of the new name should be linked to the old one (renamed_from); neither name regressed.",
+    "tests": [
+      "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock",
+      "Storefront.UnitTests.Inventory.WarehouseAllocatorTests.Allocates_stock_across_warehouses"
+    ],
+    "changes": [
+      {
+        "commit": 108,
+        "sha": "bcbf3c3c5d0db031210f89bf3b8b7446efc2d0f6",
+        "kind": "test_renamed",
+        "tier": "must_not",
+        "direction": "neutral",
+        "subject": "Rename the warehouse allocation test after its behaviour"
+      }
+    ]
+  },
+  {
+    "id": "LIFE-REMOVED",
+    "category": "lifecycle",
+    "summary": "Test removal at commit 112: LegacyXmlExporterTests.Exports_orders_as_xml (90 ms) and the legacy exporter are deleted. The suite total drops, but nothing improved.",
+    "tests": [
+      "Storefront.UnitTests.Exports.LegacyXmlExporterTests.Exports_orders_as_xml"
+    ],
+    "changes": [
+      {
+        "commit": 112,
+        "sha": "cace5e0260956eec5eca9da578942b76e8b9a8a2",
+        "kind": "test_removed",
+        "tier": "must_not",
+        "direction": "neutral",
+        "subject": "Remove the legacy XML order export"
+      }
+    ]
+  },
+  {
+    "id": "TEST-SCOPE-CHANGE",
+    "category": "lifecycle",
+    "summary": "Test-scope change at commit 76: the test now covers 12 regions instead of 3, so it goes 49.5 → 198 ms on every target. Only tests/ changed. Reporting it as a product regression is a misclassification.",
+    "tests": [
+      "Storefront.UnitTests.Tax.TaxCalculatorTests.Calculates_tax_for_all_regions"
+    ],
+    "changes": [
+      {
+        "commit": 76,
+        "sha": "40583cf9fde48cff602b27fe24215214ce0f3e46",
+        "kind": "test_scope",
+        "tier": "optional",
+        "direction": "neutral",
+        "subject": "Cover every supported region in tax calculator tests"
+      }
+    ]
+  },
+  {
+    "id": "ENV-BAD-RUNNER",
+    "category": "environment",
+    "summary": "Environment noise, not a code change: in about 1 of 40 runs (decided by a hash of commit, target and run attempt) every simulated cost is 1.35x slower, as on a noisy CI machine. The affected runs are listed in bad-runners.json. No per-test alert is expected (must_not); a run-level anomaly may be reported. Real CPU-bound and sub-millisecond tests are not affected.",
+    "tests": [],
+    "changes": []
+  }
+]

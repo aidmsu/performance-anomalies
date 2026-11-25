@@ -1,0 +1,1217 @@
+{
+  "schema": 1,
+  "base_sha": "8b937a72375cf7ea3c2ca0d91c97127464a8dc8f",
+  "ordering": "topological (index); never order by date",
+  "targets": [
+    "linux-x64",
+    "linux-arm64",
+    "windows-x64",
+    "macos-arm64"
+  ],
+  "commits": [
+    {
+      "index": 1,
+      "sha": "8e1117c83c0304535db4053a4dc8a391b8c87b5b",
+      "date": "2026-11-25T21:23:42+01:00",
+      "subject": "Create storefront solution with unit and integration tests",
+      "changes": [],
+      "filler": false
+    },
+    {
+      "index": 2,
+      "sha": "df6f4816bc8d0219adb0bfb6c9084d17646c0e8a",
+      "date": "2026-11-25T21:24:27+01:00",
+      "subject": "Document the order lifecycle",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 3,
+      "sha": "0c4b73453799af9c0b776d77aefab51116d516a1",
+      "date": "2026-11-25T21:25:12+01:00",
+      "subject": "Add tax jurisdictions for Brittany",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 4,
+      "sha": "c609bdc1c33a6b7e3a1fff4b86e329de7fa6c39f",
+      "date": "2026-11-25T21:25:57+01:00",
+      "subject": "Add fulfilment terms to the glossary",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 5,
+      "sha": "410e4ee8916f6f8385a054bd14686af1c57e72ba",
+      "date": "2026-11-25T21:26:42+01:00",
+      "subject": "Describe maintenance windows in the operations guide",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 6,
+      "sha": "0524445b7bf69d1442a93c9e20edfa19736603d7",
+      "date": "2026-11-25T21:27:27+01:00",
+      "subject": "Add XML documentation to MaintenanceWindow",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 7,
+      "sha": "873fee1ad9a958810a832b2ecd72fc4af6067799",
+      "date": "2026-11-25T21:28:12+01:00",
+      "subject": "Add tax jurisdictions for Normandy",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 8,
+      "sha": "f9a0d83546ab4345b879f71a1708883a9be1c315",
+      "date": "2026-11-25T21:28:57+01:00",
+      "subject": "Upsert catalog feed rows one at a time",
+      "changes": [
+        "REG-EARLY:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 9,
+      "sha": "dd8771f5158b0711198537eb21195659b294ce13",
+      "date": "2026-11-25T21:29:42+01:00",
+      "subject": "Record the decision to simulate infrastructure",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 10,
+      "sha": "d4864aede01c2586955d43507f697ec3ead62f89",
+      "date": "2026-11-25T21:30:27+01:00",
+      "subject": "Skip the loyalty points test until the ledger fixture is fixed",
+      "changes": [
+        "LIFE-GAP-WITH-CHANGE:test_skipped"
+      ],
+      "filler": false
+    },
+    {
+      "index": 11,
+      "sha": "49891fda11694276da4e10a90be07e1a0243ea1c",
+      "date": "2026-11-25T21:31:12+01:00",
+      "subject": "Add tax jurisdictions for Provence",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 12,
+      "sha": "4dc16c5aec681d3e4ca1b86ecf5fd3b73d7384a9",
+      "date": "2026-11-25T21:31:57+01:00",
+      "subject": "Recalculate the tier bonus on every points accrual",
+      "changes": [
+        "LIFE-GAP-WITH-CHANGE:hidden_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 13,
+      "sha": "021780e46e65cde9e4a7b64b0036eb938943e067",
+      "date": "2026-11-25T21:32:42+01:00",
+      "subject": "Explain currency rounding rules",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 14,
+      "sha": "f90fcdc6e68e486e64c1e70008d66d45c4542c77",
+      "date": "2026-11-25T21:33:27+01:00",
+      "subject": "Audit loyalty tier evaluations",
+      "changes": [
+        "REG-SENS-3PCT:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 15,
+      "sha": "6577de516972dd517707ce373bea334d402fa7af",
+      "date": "2026-11-25T21:34:12+01:00",
+      "subject": "Add tax jurisdictions for Occitanie",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 16,
+      "sha": "1068c33ab5de20369ae214bd66afe19562bb5520",
+      "date": "2026-11-25T21:34:57+01:00",
+      "subject": "Re-enable the loyalty points test",
+      "changes": [
+        "LIFE-GAP-WITH-CHANGE:test_unskipped"
+      ],
+      "filler": false
+    },
+    {
+      "index": 17,
+      "sha": "587333d8a10b5fa34736723f615ced99f605f7de",
+      "date": "2026-11-25T21:35:42+01:00",
+      "subject": "Limit the quantity per SKU at checkout",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 18,
+      "sha": "f700eca5835f2db662b28caaa200126ff8708989",
+      "date": "2026-11-25T21:36:27+01:00",
+      "subject": "Round three-decimal currencies with the exchange's rules",
+      "changes": [
+        "REG-PARAM-HARD:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 19,
+      "sha": "40a6290fce580fa91a463f77149b24d467807c91",
+      "date": "2026-11-25T21:37:12+01:00",
+      "subject": "Add tax jurisdictions for Lombardy",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 20,
+      "sha": "ec5ece337981d187b82958afa6e396424d7d24fa",
+      "date": "2026-11-25T21:37:57+01:00",
+      "subject": "Switch payload checksums to CRC-64",
+      "changes": [
+        "REG-ARM64-ONLY:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 21,
+      "sha": "aa385c764d2cd487044b718b3790a99d961da4a3",
+      "date": "2026-11-25T21:38:42+01:00",
+      "subject": "Block checkout to embargoed destinations",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 22,
+      "sha": "4c428e1b75eecde242ed66f4ae543cdbcb36f23f",
+      "date": "2026-11-25T21:39:27+01:00",
+      "subject": "Harden gift card redemption and return pickups",
+      "changes": [
+        "REG-SQUASH-GIFTCARD:step",
+        "REG-SQUASH-RETURNS:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 23,
+      "sha": "4f9605942e2ad5aa9188f1c32ec55e9994f7cd5b",
+      "date": "2026-11-25T21:40:12+01:00",
+      "subject": "Add tax jurisdictions for Tuscany",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 24,
+      "sha": "1f1d56b06c26afc68b40d1346fb8d719472652ea",
+      "date": "2026-11-25T21:40:57+01:00",
+      "subject": "Expand synonyms when building the search index",
+      "changes": [
+        "REG-STAIRCASE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 25,
+      "sha": "6b4bb9b774dd7c3a8e2ecb1aa5e227c506b16d0d",
+      "date": "2026-11-25T21:41:42+01:00",
+      "subject": "Reject PO boxes for courier shipments",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 26,
+      "sha": "658dab79287908c8266821a84085bc0193dd9148",
+      "date": "2026-11-25T21:42:27+01:00",
+      "subject": "Deduplicate merged wishlist items by variant",
+      "changes": [
+        "REG-SENS-6PCT:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 27,
+      "sha": "22168719082b40cc44bdde708fda137a24188205",
+      "date": "2026-11-25T21:43:12+01:00",
+      "subject": "Add tax jurisdictions for Piedmont",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 28,
+      "sha": "b576978f8916a1082469691ed147bd995bf1af0f",
+      "date": "2026-11-25T21:43:57+01:00",
+      "subject": "Check coupon eligibility against the order history",
+      "changes": [
+        "REG-REINTRODUCED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 29,
+      "sha": "43ed6124ead6d806737d9efb46698c3b208c9c61",
+      "date": "2026-11-25T21:44:42+01:00",
+      "subject": "Require age verification for restricted items",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 30,
+      "sha": "c402a143f3cd02790abe23a5d21f44a60d45a939",
+      "date": "2026-11-25T21:45:27+01:00",
+      "subject": "Apply POSIX permissions to every export directory",
+      "changes": [
+        "REG-POSIX-ONLY:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 31,
+      "sha": "799f4d590b7456649894645cf13c7515f15eede7",
+      "date": "2026-11-25T21:46:12+01:00",
+      "subject": "Add tax jurisdictions for Catalonia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 32,
+      "sha": "7ec4b06cac85f5fd59438254703b15412a368bf8",
+      "date": "2026-11-25T21:46:57+01:00",
+      "subject": "Validate pooled connections before leasing them",
+      "changes": [
+        "REG-TAIL-INTERMITTENT:tail"
+      ],
+      "filler": false
+    },
+    {
+      "index": 33,
+      "sha": "4dcd6c723ecaba5f15e9c309e90b43eaa541c3e3",
+      "date": "2026-11-25T21:47:42+01:00",
+      "subject": "Keep hazardous items off air shipping",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 34,
+      "sha": "9fbc7bb851b4e56e8056b24e47f362305dcd0e5d",
+      "date": "2026-11-25T21:48:27+01:00",
+      "subject": "Price catalog partitions on the shared worker pool",
+      "changes": [
+        "REG-VARIANCE:variance"
+      ],
+      "filler": false
+    },
+    {
+      "index": 35,
+      "sha": "32e88d1fd160dec32fd4e354273f69fb1b36ddfd",
+      "date": "2026-11-25T21:49:12+01:00",
+      "subject": "Add tax jurisdictions for Andalusia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 36,
+      "sha": "d34a04faaea4361cf932d11af63eb88f8e375ee3",
+      "date": "2026-11-25T21:49:57+01:00",
+      "subject": "Estimate shipping for every cart line",
+      "changes": [
+        "REG-STEP-MODERATE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 37,
+      "sha": "b1894dabd5f7c59501a563aac22cbebd7225d836",
+      "date": "2026-11-25T21:50:42+01:00",
+      "subject": "Check the billing country against the card country",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 38,
+      "sha": "80b665082274cd56307e2e04bed3b693f6ae0cd4",
+      "date": "2026-11-25T21:51:27+01:00",
+      "subject": "Add a stub for exporting the admin audit log",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 39,
+      "sha": "0e06ec890fe84bc05ba4caf11379b5bc68cb375f",
+      "date": "2026-11-25T21:52:12+01:00",
+      "subject": "Add tax jurisdictions for Galicia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 40,
+      "sha": "4bd7c1341d528bdad76cb495194ae1de4adcc702",
+      "date": "2026-11-25T21:52:57+01:00",
+      "subject": "Use promotion rules precompiled at publish time",
+      "changes": [
+        "OPT-REVERTED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 41,
+      "sha": "26f543151b4f9b9b334f04ff72e2d57395003905",
+      "date": "2026-11-25T21:53:42+01:00",
+      "subject": "Detect duplicate orders placed within ten minutes",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 42,
+      "sha": "87a9b5463f572c0230afe227cf865ba0f171674e",
+      "date": "2026-11-25T21:54:27+01:00",
+      "subject": "Fix typos in the operations guide",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 43,
+      "sha": "5812b0b89f4d9247380047213e83c4b1499e7c08",
+      "date": "2026-11-25T21:55:12+01:00",
+      "subject": "Extract duplicate key selection in the deduplicator",
+      "changes": [
+        "REG-PARAM-SCALING:decoy",
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 44,
+      "sha": "4464ed42995f77478784663e842499df98cb8586",
+      "date": "2026-11-25T21:55:57+01:00",
+      "subject": "Rank search results by average review rating",
+      "changes": [
+        "REG-FIXED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 45,
+      "sha": "9c6d2ffc62aacb5900d6b8452f6967105043d517",
+      "date": "2026-11-25T21:56:42+01:00",
+      "subject": "Cap gift card purchases per order",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 46,
+      "sha": "d2ba8f1cdf694b30a7386fe7942bf6a4d68761ea",
+      "date": "2026-11-25T21:57:27+01:00",
+      "subject": "Keep first occurrence order when removing duplicate items",
+      "changes": [
+        "REG-PARAM-SCALING:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 47,
+      "sha": "ff141c852b6d365093d166e699f375bfa3e8e683",
+      "date": "2026-11-25T21:58:12+01:00",
+      "subject": "Add tax jurisdictions for Wallonia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 48,
+      "sha": "3bdb06670a1248432e85cfb90156b4ef3a040f81",
+      "date": "2026-11-25T21:58:57+01:00",
+      "subject": "Index product attributes for faceted search",
+      "changes": [
+        "REG-STAIRCASE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 49,
+      "sha": "581247134ab8a405f0afdfae6400888e869c8c1c",
+      "date": "2026-11-25T21:59:42+01:00",
+      "subject": "Separate pre-order items from in-stock items",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 50,
+      "sha": "7a0670ca3e806b8b6dce7ba349a60a6c1c11922d",
+      "date": "2026-11-25T22:00:27+01:00",
+      "subject": "Include a tax breakdown for every sales report line",
+      "changes": [
+        "REG-PARTIAL-FIX:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 51,
+      "sha": "0f50067aa006d2e6ed746578f9d827180604642f",
+      "date": "2026-11-25T22:01:12+01:00",
+      "subject": "Add tax jurisdictions for Tyrol",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 52,
+      "sha": "940934115ef8d536fc984409099ef79916de42b6",
+      "date": "2026-11-25T22:01:57+01:00",
+      "subject": "Retry attachment writes on Windows sharing violations",
+      "changes": [
+        "REG-WINDOWS-ONLY:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 53,
+      "sha": "52d00bda65ddeee6700e6db465a6322dc334d3c5",
+      "date": "2026-11-25T22:02:42+01:00",
+      "subject": "Validate VAT IDs of business customers",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 54,
+      "sha": "2ec73c7bf84695f5f654c38e1eef53c0e6463757",
+      "date": "2026-11-25T22:03:27+01:00",
+      "subject": "Revert \"Check coupon eligibility against the order history\"",
+      "changes": [
+        "REG-REINTRODUCED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 55,
+      "sha": "449c24020e255c83d87116a9aee0cd9e57fd3105",
+      "date": "2026-11-25T22:04:12+01:00",
+      "subject": "Add tax jurisdictions for Styria",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 56,
+      "sha": "baaffdc9c386bc9f0e994fa9d61672256636db4c",
+      "date": "2026-11-25T22:04:57+01:00",
+      "subject": "Validate product feeds against the partner XSD",
+      "changes": [
+        "REG-ALL-TARGETS-DIFFERENT:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 57,
+      "sha": "e710098bd6576cff545192bd0004d8126afb5c6b",
+      "date": "2026-11-25T22:05:42+01:00",
+      "subject": "Extract invoice line formatting into a helper",
+      "changes": [
+        "REG-STEP-LARGE:decoy",
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 58,
+      "sha": "3fd3f7da987c6961e6d1dbbdbb7ecdfcc9d2327f",
+      "date": "2026-11-25T22:06:27+01:00",
+      "subject": "Query device reputation during fraud scoring",
+      "changes": [
+        "REG-STEP-IN-NOISE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 59,
+      "sha": "4d213e900c0acc03f6e1fc8f9a95bd925a3b9c7d",
+      "date": "2026-11-25T22:07:12+01:00",
+      "subject": "Add tax jurisdictions for Bohemia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 60,
+      "sha": "b8acae83278d7ca6ec4c0bf1a9db241c591f50ff",
+      "date": "2026-11-25T22:07:57+01:00",
+      "subject": "Embed brand fonts into invoice PDFs",
+      "changes": [
+        "REG-STEP-LARGE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 61,
+      "sha": "621ad2cf9073441daa37ecc70a999ad27d8640b4",
+      "date": "2026-11-25T22:08:42+01:00",
+      "subject": "Limit the value of cash on delivery orders",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 62,
+      "sha": "77c993c340f21c1b371cd4283f5958dcb1886faf",
+      "date": "2026-11-25T22:09:27+01:00",
+      "subject": "Restore sessions from the distributed cache first",
+      "changes": [
+        "REG-BIMODAL:modality"
+      ],
+      "filler": false
+    },
+    {
+      "index": 63,
+      "sha": "706f15721b1e95f757b904f208f3003744c7c627",
+      "date": "2026-11-25T22:10:12+01:00",
+      "subject": "Add tax jurisdictions for Moravia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 64,
+      "sha": "aada3725c1c2db5f09cf771a2e45e48931041ca9",
+      "date": "2026-11-25T22:10:57+01:00",
+      "subject": "Check new order numbers against the archive",
+      "changes": [
+        "REG-STEP-SMALL:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 65,
+      "sha": "844f2fb25f29840d83e12fd89ffd6bf16b17e442",
+      "date": "2026-11-25T22:11:42+01:00",
+      "subject": "Verify student status for student discounts",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 66,
+      "sha": "225cd566a25c864ed042c01572f3cf3246160ba8",
+      "date": "2026-11-25T22:12:27+01:00",
+      "subject": "Rebuild only changed partitions of the catalog snapshot",
+      "changes": [
+        "OPT-STEP:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 67,
+      "sha": "0a53e0bb33814e6677d1ae3ce4523d5dbc74a9f8",
+      "date": "2026-11-25T22:13:12+01:00",
+      "subject": "Add tax jurisdictions for Silesia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 68,
+      "sha": "13c9e2c7f3c42839b4483a2b322d66745da78fd3",
+      "date": "2026-11-25T22:13:57+01:00",
+      "subject": "Validate order API payloads against the published JSON schema",
+      "changes": [
+        "REG-FANOUT:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 69,
+      "sha": "48c2046fb97ebacb0627641bdfdda7cc0659f959",
+      "date": "2026-11-25T22:14:42+01:00",
+      "subject": "Keep product bundles complete at checkout",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 70,
+      "sha": "95d7fe480d525a60656acb8dd880500b5019cbfb",
+      "date": "2026-11-25T22:15:27+01:00",
+      "subject": "Add phonetic matching for brand names",
+      "changes": [
+        "REG-STAIRCASE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 71,
+      "sha": "269d1b2c77244faf3fa6fffb1e07ab56bf694f7e",
+      "date": "2026-11-25T22:16:12+01:00",
+      "subject": "Add tax jurisdictions for Pomerania",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 72,
+      "sha": "d3b0ed358a51f5915a8fcab3d0fb7ab90848ae35",
+      "date": "2026-11-25T22:16:57+01:00",
+      "subject": "Convert thumbnails to Display P3 on macOS",
+      "changes": [
+        "REG-MACOS-ONLY:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 73,
+      "sha": "7454d0e61af755e5159705025826d01e73300f32",
+      "date": "2026-11-25T22:17:42+01:00",
+      "subject": "Check that the chosen delivery slot is still free",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 74,
+      "sha": "a919a77e751ddda8d02a729294aa579a55ca8e4e",
+      "date": "2026-11-25T22:18:27+01:00",
+      "subject": "Normalize CSV line endings for Excel on Windows",
+      "changes": [
+        "REG-WINDOWS-HARD:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 75,
+      "sha": "74e2a103a2284741ff5c9ef98a847bd5d177841b",
+      "date": "2026-11-25T22:19:12+01:00",
+      "subject": "Add tax jurisdictions for Zealand",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 76,
+      "sha": "40583cf9fde48cff602b27fe24215214ce0f3e46",
+      "date": "2026-11-25T22:19:57+01:00",
+      "subject": "Cover every supported region in tax calculator tests",
+      "changes": [
+        "TEST-SCOPE-CHANGE:test_scope"
+      ],
+      "filler": false
+    },
+    {
+      "index": 77,
+      "sha": "9896adb6ed16ec6b1276b7c31dede74bb237b965",
+      "date": "2026-11-25T22:20:42+01:00",
+      "subject": "Warn when the warehouse cutoff time has passed",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 78,
+      "sha": "5ab17d441c6fa14bed0a37b71218b88bc14100d7",
+      "date": "2026-11-25T22:21:27+01:00",
+      "subject": "Cache tax breakdowns per tax category in sales reports",
+      "changes": [
+        "REG-PARTIAL-FIX:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 79,
+      "sha": "95a89382eb9e7ec5bb67972454b854446bbed290",
+      "date": "2026-11-25T22:22:12+01:00",
+      "subject": "Add tax jurisdictions for Jutland",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step",
+        "REG-DRIFT-SUBNOISE:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 80,
+      "sha": "f9eeff68c854a32791f5b566a1ba665c19f7bcd1",
+      "date": "2026-11-25T22:22:57+01:00",
+      "subject": "Wait for the warehouse feed before syncing stock levels",
+      "changes": [
+        "OPT-BIMODAL-FIXED:modality"
+      ],
+      "filler": false
+    },
+    {
+      "index": 81,
+      "sha": "9513688c7f2d40efada91313af759c444ed82753",
+      "date": "2026-11-25T22:23:42+01:00",
+      "subject": "Require a house number in delivery addresses",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 82,
+      "sha": "6ef6c884484b5852a03acb94ce82ffa9700e5e94",
+      "date": "2026-11-25T22:24:27+01:00",
+      "subject": "Aggregate review ratings inside the search query",
+      "changes": [
+        "REG-FIXED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 83,
+      "sha": "88fe768be0249c5502914aa775428b265d3098e6",
+      "date": "2026-11-25T22:25:12+01:00",
+      "subject": "Add tax jurisdictions for Scania",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 84,
+      "sha": "cfb677ce17db005af2e96f7613c6b32824e5ddb7",
+      "date": "2026-11-25T22:25:57+01:00",
+      "subject": "Add bulk import for supplier catalogs",
+      "changes": [
+        "LIFE-NEW-SLOW-TEST:test_added"
+      ],
+      "filler": false
+    },
+    {
+      "index": 85,
+      "sha": "7e8cc9195711f5c60f64efe0bd84b1882888fcf5",
+      "date": "2026-11-25T22:26:42+01:00",
+      "subject": "Require export licenses for controlled goods",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 86,
+      "sha": "b6c3b4807c06fe84335fcfcff5a0f3ff28c22879",
+      "date": "2026-11-25T22:27:27+01:00",
+      "subject": "Use platform-native path canonicalization",
+      "changes": [
+        "REG-OS-TRADEOFF:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 87,
+      "sha": "94820e715398c40bebe7e92c7b3f3640f18e3066",
+      "date": "2026-11-25T22:28:12+01:00",
+      "subject": "Add tax jurisdictions for Uppland",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 88,
+      "sha": "a14209dd24b4d2c0c27a9e7b3a21abe080c897c4",
+      "date": "2026-11-25T22:28:57+01:00",
+      "subject": "Publish compressed feeds for each CDN region",
+      "changes": [
+        "REG-CPU-BOUND:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 89,
+      "sha": "05d117c3bafd0bd595aaffc4cec37d8cbf76113b",
+      "date": "2026-11-25T22:29:42+01:00",
+      "subject": "Prevent overlapping product subscriptions",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step",
+        "OPT-GRADUAL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 90,
+      "sha": "d643f84b8f4973b5c15c8a959118647efca8d8f6",
+      "date": "2026-11-25T22:30:27+01:00",
+      "subject": "Validate supplier SKUs during bulk import",
+      "changes": [
+        "LIFE-NEW-SLOW-TEST:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 91,
+      "sha": "6c0669a2ef339789faed38f270d26d0daab7f283",
+      "date": "2026-11-25T22:31:12+01:00",
+      "subject": "Add tax jurisdictions for Algarve",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 92,
+      "sha": "f41bd3775866a9ca8af7a38ae50131a877ff9ef8",
+      "date": "2026-11-25T22:31:57+01:00",
+      "subject": "Reapply \"Check coupon eligibility against the order history\"",
+      "changes": [
+        "REG-REINTRODUCED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 93,
+      "sha": "dcc688e070b3adf0457c7d449e4d3f1fcfd5b2f2",
+      "date": "2026-11-25T22:32:42+01:00",
+      "subject": "Cap loyalty point redemption per order",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 94,
+      "sha": "6935d9f69ea383fc754ed091834ea0cfa48f669e",
+      "date": "2026-11-25T22:33:27+01:00",
+      "subject": "Revert \"Use promotion rules precompiled at publish time\"",
+      "changes": [
+        "OPT-REVERTED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 95,
+      "sha": "30646cf7ab7cd43d3100d6a593098a82dbd4b898",
+      "date": "2026-11-25T22:34:12+01:00",
+      "subject": "Add tax jurisdictions for Minho",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 96,
+      "sha": "9a8180df8bf66869b1d3459bdbb07d85b69e2ca0",
+      "date": "2026-11-25T22:34:57+01:00",
+      "subject": "Store edge n-grams for search autocomplete",
+      "changes": [
+        "REG-STAIRCASE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 97,
+      "sha": "119821a73762b8d25b7cfc7c21c2707ac57718fc",
+      "date": "2026-11-25T22:35:42+01:00",
+      "subject": "Check that marketplace sellers are still active",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 98,
+      "sha": "53dd39aa5156b2f4fb42364e42dbc061524a7817",
+      "date": "2026-11-25T22:36:27+01:00",
+      "subject": "Raise the default retry budget for partner calls",
+      "changes": [
+        "REG-CONFIG:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 99,
+      "sha": "165c57a9887ae5ed7d5d81c6110d35b304fda31d",
+      "date": "2026-11-25T22:37:12+01:00",
+      "subject": "Add tax jurisdictions for Holland",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 100,
+      "sha": "ed303fc8701984656c4a940a34146362e4b46ff8",
+      "date": "2026-11-25T22:37:57+01:00",
+      "subject": "Normalize Turkish dotted and dotless I in month names",
+      "changes": [
+        "REG-PARAM-CASE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 101,
+      "sha": "8258c6ff05345c98d626d6f99d1acef81c61e2f7",
+      "date": "2026-11-25T22:38:42+01:00",
+      "subject": "Enforce carrier parcel weight limits",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 102,
+      "sha": "d0a36986d8825bd97228fa0c7d195b85aea2a82d",
+      "date": "2026-11-25T22:39:27+01:00",
+      "subject": "Match card settlements during ledger reconciliation",
+      "changes": [
+        "REG-ABSOLUTE-LARGE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 103,
+      "sha": "fe83b8edca04a8a2c89b17800f3e6b8667330019",
+      "date": "2026-11-25T22:40:12+01:00",
+      "subject": "Add tax jurisdictions for Friesland",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 104,
+      "sha": "69628e4485f715caa8442a9cce0d6b33a7eff7e6",
+      "date": "2026-11-25T22:40:57+01:00",
+      "subject": "Apply compatibility decomposition to SKU input",
+      "changes": [
+        "REG-RELATIVE-LARGE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 105,
+      "sha": "520bbbb9fbd0cf1f6c4b71c87abf93dadaa83109",
+      "date": "2026-11-25T22:41:42+01:00",
+      "subject": "Apply lithium battery shipping rules",
+      "changes": [
+        "REG-GRADUAL-LINEAR:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 106,
+      "sha": "669dee621a6c3d7fa2342b31fb54dc6811c26a06",
+      "date": "2026-11-25T22:42:27+01:00",
+      "subject": "Verify card BIN against the issuer registry",
+      "changes": [
+        "REG-HOTFIX-ONE-COMMIT:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 107,
+      "sha": "036761fac2c5e9c52e71d49ab4236f7655def081",
+      "date": "2026-11-25T22:43:12+01:00",
+      "subject": "Hotfix: read card BIN data from the local registry copy",
+      "changes": [
+        "REG-HOTFIX-ONE-COMMIT:step",
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 108,
+      "sha": "bcbf3c3c5d0db031210f89bf3b8b7446efc2d0f6",
+      "date": "2026-11-25T22:43:57+01:00",
+      "subject": "Rename the warehouse allocation test after its behaviour",
+      "changes": [
+        "LIFE-RENAMED:test_renamed"
+      ],
+      "filler": false
+    },
+    {
+      "index": 109,
+      "sha": "f4e46a58016f2049e62a816737bdb1015004f8a2",
+      "date": "2026-11-25T22:44:42+01:00",
+      "subject": "Document the supported shipping carriers",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 110,
+      "sha": "f6dcf4c25cc2882f2fe158343733a42107b86ab5",
+      "date": "2026-11-25T22:45:27+01:00",
+      "subject": "Render gift message previews as images",
+      "changes": [
+        "REG-SHORT-LIVED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 111,
+      "sha": "27c05b28b2be299d18871c2f9ee867cbbe9c6222",
+      "date": "2026-11-25T22:46:12+01:00",
+      "subject": "Add tax jurisdictions for Carinthia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 112,
+      "sha": "cace5e0260956eec5eca9da578942b76e8b9a8a2",
+      "date": "2026-11-25T22:46:57+01:00",
+      "subject": "Remove the legacy XML order export",
+      "changes": [
+        "LIFE-REMOVED:test_removed"
+      ],
+      "filler": false
+    },
+    {
+      "index": 113,
+      "sha": "ca139c5c146a903b9aeab7b6035c518c0c4d73a4",
+      "date": "2026-11-25T22:47:42+01:00",
+      "subject": "Render gift message previews on first view",
+      "changes": [
+        "REG-SHORT-LIVED:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 114,
+      "sha": "008d3f5d9a1db307331d6fd749f797daaad16c5e",
+      "date": "2026-11-25T22:48:27+01:00",
+      "subject": "Record the search indexing pipeline decision",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 115,
+      "sha": "7068862d2b72df04bd4771c3a28bddaca3e27b23",
+      "date": "2026-11-25T22:49:12+01:00",
+      "subject": "Add tax jurisdictions for Lapland",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 116,
+      "sha": "c4cbb292de19eb59e80c36812213095b52effe78",
+      "date": "2026-11-25T22:49:57+01:00",
+      "subject": "Render order confirmations with the new template engine",
+      "changes": [
+        "REG-LATE:step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 117,
+      "sha": "0de420a882f56b33456bd42c2a7646d1e1d4a316",
+      "date": "2026-11-25T22:50:42+01:00",
+      "subject": "Tidy up admin feature flag names",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 118,
+      "sha": "62235beab5d6a77436c46f3eadcf0f0e96d316cb",
+      "date": "2026-11-25T22:51:27+01:00",
+      "subject": "Document the release process",
+      "changes": [],
+      "filler": true
+    },
+    {
+      "index": 119,
+      "sha": "79347ac8d76ad410b89a4080337aa84f9c05542c",
+      "date": "2026-11-25T22:52:12+01:00",
+      "subject": "Add tax jurisdictions for Ostrobothnia",
+      "changes": [
+        "REG-GRADUAL-ACCEL:ramp_step"
+      ],
+      "filler": false
+    },
+    {
+      "index": 120,
+      "sha": "2df79f885311cff984c381d77136b0ad8da7aa02",
+      "date": "2026-11-25T22:52:57+01:00",
+      "subject": "Add payment terms to the glossary",
+      "changes": [],
+      "filler": true
+    }
+  ]
+}
