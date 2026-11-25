@@ -13,6 +13,7 @@ public sealed class SearchIndexBuilder
     private static readonly string[] AnalyzerStages =
     [
         "synonyms",
+        "attributes",
     ];
 
     public IReadOnlyDictionary<string, IReadOnlyList<string>> Build(IReadOnlyList<SearchDocument> documents)
