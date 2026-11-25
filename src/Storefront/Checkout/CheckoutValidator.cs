@@ -20,6 +20,7 @@ public sealed class CheckoutValidator
         new("age-restricted-items", RuleCheckCostMs),
         new("hazmat-air-shipping", RuleCheckCostMs),
         new("billing-country-match", RuleCheckCostMs),
+        new("duplicate-order-window", RuleCheckCostMs),
     ];
 
     public IReadOnlyList<string> Validate(CheckoutRequest request)
